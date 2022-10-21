@@ -1,5 +1,8 @@
 json-server --watch db.json
 
+경일님 Part : 로그인, 회원가입, 메인페이지, 주문페이지(restaurant)
+지운님 Part : 주문페이지(customer), 주문상세페이지(order), 주문상세페이지(customer)메뉴페이지
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
