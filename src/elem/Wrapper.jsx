@@ -12,4 +12,5 @@ const WrapperDiv = styled.div`
   padding: ${(props) => props.pd};
   width: ${(props) => props.wd};
   height: ${(props) => props.hg};
+  ${(props) => props.inline};
 `;
