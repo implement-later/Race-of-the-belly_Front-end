@@ -1,12 +1,38 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Wrapper from "../elem/Wrapper";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { __addUsers } from "../redux/modules/login/loginSlice";
 
 function SignUp() {
-  const [modal, setModal] = useState(false);
-  const [checkd, setCheckd] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isRestaurant, setIsRestaurant] = useState(false);
+  const [restaurantName, setRestaurantName] = useState("");
+  const [nickName, setNickName] = useState("");
+
+  const { user } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const onSubmitHandle = (e) => {
+    e.preventDefault();
+
+    const input = {
+      id: username,
+      password: password,
+      isRestaurant,
+      restaurantName,
+      nickName,
+    };
+
+    dispatch(__addUsers(input));
+    setUsername("");
+    setPassword("");
+    setRestaurantName("");
+  };
+
   return (
     <Wrapper
       mg="20px auto"
@@ -16,37 +42,58 @@ function SignUp() {
       inline="background: #e1eef6;"
     >
       <h1>SignUp</h1>
-      <form>
-        <lable>ID : </lable>
-        <input type="text" name="username" />
+      <form onSubmit={(e) => onSubmitHandle(e)}>
+        <label>ID : </label>
+        <input
+          type="text"
+          pattern="/^[a-z]+[a-z0-9]{5,19}$/g"
+          name="username"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          value={username || ""}
+        />
+        <button>중복체크</button>
+        <label>영문자로 시작하는 영문자 또는 숫자 6~20자 </label>
         <br />
-        <lable>Nick Name : </lable>
-        <input type="text" name="name" />
+        <label>Nick Name : </label>
+        <input
+          type="text"
+          name="name"
+          placeholder="nickName"
+          onChange={(e) => {
+            setNickName(e.target.value);
+          }}
+          value={nickName || ""}
+        />
         <br />
         <label htmlFor="password">Password : </label>
-        <input type="password" />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          value={password || ""}
+        />
         <br />
         <label htmlFor="password">Password Confirm : </label>
-        <input type="password" />
+        <input type="password" placeholder="password" />
         <br />
         <input
-          onChange={() => {
-            setModal(true);
-            setCheckd(true);
-          }}
-          type="radio"
+          type="checkbox"
           name="isRestaurant"
+          defaultChecked={false}
+          onChange={(e) => {
+            setIsRestaurant(e.target.checked);
+          }}
         />
         Owner check
         <p />
-        {modal == true ? <Modal /> : null}
+        {isRestaurant == true ? <Modal /> : null}
         <br />
-        <button
-          onClick={() => {
-            navigate("login");
-          }}
-          typut="button"
-        >
+        <button onClick={() => {}} typut="submit">
           Sign up
         </button>
       </form>
@@ -57,8 +104,8 @@ function SignUp() {
 function Modal() {
   return (
     <>
-      <lable>Restaurant Name : </lable>
-      <input type="text" name="isRestaurant" />
+      <label>Restaurant Name : </label>
+      <input type="text" name="isRestaurant" placeholder="restaurantName" />
     </>
   );
 }

@@ -22,5 +22,77 @@
       "menuPrice": "12000",
       "menuCnt": 1
     }
+  ],
+  "user": [
+    {
+      "id": "123",
+      "password": "123",
+      "isRestaurant": false
+    },
+    {
+      "id": "234",
+      "password": "234",
+      "isRestaurant": true
+    },
+    {
+      "id": "243",
+      "password": "345",
+      "isRestaurant": true
+    },
+    {
+      "id": "asd",
+      "password": "asd"
+    },
+    {
+      "id": "135135",
+      "password": "5123513",
+      "isRestaurant": ""
+    },
+    {
+      "id": "235",
+      "password": "235",
+      "isRestaurant": false
+    },
+    {
+      "id": "123123",
+      "password": "asdasdasd",
+      "isRestaurant": true
+    },
+    {
+      "id": "ns_zfdk",
+      "password": "",
+      "isRestaurant": false
+    },
+    {
+      "id": "235235",
+      "password": "23523523",
+      "isRestaurant": false
+    },
+    {
+      "id": "2623623663",
+      "password": "2362623632623",
+      "isRestaurant": true
+    },
+    {
+      "id": "w9Ptre6",
+      "password": "",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": ""
+    },
+    {
+      "id": "afasfasf",
+      "password": "asfasfasf",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "asfasfasf"
+    },
+    {
+      "id": "nTAD1_U",
+      "password": "",
+      "isRestaurant": true,
+      "restaurantName": "",
+      "nickName": "asfasfasf"
+    }
   ]
 }

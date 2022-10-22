@@ -1,24 +1,33 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Wrapper from "../elem/Wrapper";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { __addUsers } from "../redux/modules/login/loginSlice";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const { user } = useSelector((state) => state.user);
+  const [isRestaurant, setIsRestaurant] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onSubmitHandle = (e) => {
     e.preventDefault();
+
+    const input = {
+      id: username,
+      password: password,
+      isRestaurant,
+    };
+
+    dispatch(__addUsers(input));
     setUsername("");
     setPassword("");
   };
 
-  const onChangeHandle = (e) => {
-    const { name, value } = e.target;
-    return { ...prev, [name]: value };
-  };
-
-  const navigate = useNavigate();
   return (
     <Wrapper
       mg="20px auto"
@@ -29,23 +38,41 @@ function Login() {
     >
       <h1>Login</h1>
       <form onSubmit={(e) => onSubmitHandle(e)}>
-        <lable>🔑 : </lable>
+        <label>🔑 : </label>
         <input
           type="text"
           name="username"
-          value={username.value}
-          onChnage={onChangeHandle}
+          placeholder="username"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          value={username || ""}
         />
         <br />
         <label htmlFor="password">🔒 : </label>
         <input
           type="password"
           name="password"
-          value={password.value}
-          onChnage={onChangeHandle}
+          placeholder="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          value={password || ""}
         />
         <br />
-        <button typut="submit">로그인</button>
+        <p>
+          <input
+            type="checkbox"
+            name="isRestaurant"
+            defaultChecked={false}
+            onChange={(e) => {
+              setIsRestaurant(e.target.checked);
+            }}
+          />
+          Owner check
+          <br />
+        </p>
+        <button typut="submit">Login</button>
         <br />
         <button
           onClick={() => {
@@ -59,5 +86,21 @@ function Login() {
     </Wrapper>
   );
 }
+
+// function Modal(props) {
+//   return (
+//     <>
+//       <label>Restaurant Name : </label>
+//       <input
+//         type="text"
+//         name="isRestaurant"
+//         onChange={(e) => {
+//           props.setIsRestaurant(e.target.value);
+//         }}
+//         value={props.isRestaurant || ""}
+//       />
+//     </>
+//   );
+// }
 
 export default Login;
