@@ -45,7 +45,7 @@
         "thumbnail": "djsklfajdkls",
         "menuPrice": "12000",
         "menuCnt": 1,
-        "id": "qwerwqe"
+        "id": 1
       },
       {
         "orderId": 5,
@@ -54,7 +54,7 @@
         "thumbnail": "djsklfajdkls",
         "menuPrice": "18000",
         "menuCnt": 3,
-        "id": "safsdagte"
+        "id": 2
       },
       {
         "orderId": 5,
@@ -63,9 +63,8 @@
         "thumbnail": "djsklfajdkls",
         "menuPrice": "10000",
         "menuCnt": 2,
-        "id": "agdsagdsag"
+        "id": 3
       },
-
       {
         "orderId": 6,
         "menuName": "떡볶이",
@@ -73,7 +72,7 @@
         "thumbnail": "djsklfajdkls",
         "menuPrice": "10000",
         "menuCnt": 2,
-        "id": "asdgasgfht"
+        "id": 4
       }
     ]
   ]

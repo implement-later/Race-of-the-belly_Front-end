@@ -6,7 +6,7 @@ import OrderDetailList from "../features/orders/OrderDetailList";
 
 // 주문상세페이지
 function OrderDetail() {
-  const [isOwner, setIsOwner] = useState(true);
+  const [isOwner, setIsOwner] = useState(false);
   return (
     <>
       <Header />
