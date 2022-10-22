@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Input = () => {
-  return <StInput>Input</StInput>;
+const Input = (props) => {
+  return <StInput {...props} required={true}></StInput>;
 };
 
 export default Input;

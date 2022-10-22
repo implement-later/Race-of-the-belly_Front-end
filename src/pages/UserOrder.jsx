@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Header from "../components/Header";
 import Layout from "../components/Layout";
-import AddOrderForm from "../features/orders/AddOrderForm";
+import OrderItemList from "../features/orders/OrderItemList";
 
 //주문페이지(customer)
 function UserOrder() {
@@ -11,7 +11,7 @@ function UserOrder() {
     <>
       <Header />
       <Layout>
-        <AddOrderForm></AddOrderForm>
+        <OrderItemList></OrderItemList>
       </Layout>
     </>
   );
