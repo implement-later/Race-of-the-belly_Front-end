@@ -49,111 +49,41 @@
   "user": [
     {
       "id": "123",
-      "password": "123",
-      "isRestaurant": false
+      "password": "123assdasd",
+      "isRestaurant": true,
+      "restaurantName": "asdasdasd",
+      "nickName": "123"
     },
     {
-      "id": "234",
-      "password": "234",
-      "isRestaurant": true
-    },
-    {
-      "id": "243",
-      "password": "345",
-      "isRestaurant": true
-    },
-    {
-      "id": "asd",
-      "password": "asd"
-    },
-    {
-      "id": "135135",
-      "password": "5123513",
-      "isRestaurant": ""
-    },
-    {
-      "id": "235",
-      "password": "235",
-      "isRestaurant": false
+      "id": "1234",
+      "password": "123assdasdc",
+      "isRestaurant": false,
+      "restaurantName": "asdasdasd",
+      "nickName": "123"
     },
     {
       "id": "123123",
-      "password": "asdasdasd",
-      "isRestaurant": true
-    },
-    {
-      "id": "ns_zfdk",
-      "password": "",
-      "isRestaurant": false
-    },
-    {
-      "id": "235235",
-      "password": "23523523",
-      "isRestaurant": false
-    },
-    {
-      "id": "2623623663",
-      "password": "2362623632623",
-      "isRestaurant": true
-    },
-    {
-      "id": "w9Ptre6",
-      "password": "",
-      "isRestaurant": false,
-      "restaurantName": "",
-      "nickName": ""
-    },
-    {
-      "id": "afasfasf",
-      "password": "asfasfasf",
-      "isRestaurant": false,
-      "restaurantName": "",
-      "nickName": "asfasfasf"
-    },
-    {
-      "id": "nTAD1_U",
-      "password": "",
+      "password": "rla123dlf!",
       "isRestaurant": true,
-      "restaurantName": "",
-      "nickName": "asfasfasf"
+      "restaurantName": "dasdasd",
+      "nickName": "asdasd"
+    },
+    {
+      "id": "123123e4",
+      "password": "rla123dlf!",
+      "isRestaurant": false,
+      "restaurantName": "dasdasd",
+      "nickName": "asdasd"
+    },
+    {
+      "id": "12314124",
+      "password": "rla123dlf!",
+      "isRestaurant": false
+    },
+    {
+      "id": "2124124asd",
+      "password": "rla123dlf!",
+      "isRestaurant": true
     }
-    [
-      {
-        "orderId": 5,
-        "menuName": "감자탕",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "12000",
-        "menuCnt": 1,
-        "id": 1
-      },
-      {
-        "orderId": 5,
-        "menuName": "밥",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "18000",
-        "menuCnt": 3,
-        "id": 2
-      },
-      {
-        "orderId": 5,
-        "menuName": "떡볶이",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "10000",
-        "menuCnt": 2,
-        "id": 3
-      },
-      {
-        "orderId": 6,
-        "menuName": "떡볶이",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "10000",
-        "menuCnt": 2,
-        "id": 4
-      }
-    ]
   ]
 }

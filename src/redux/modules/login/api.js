@@ -8,7 +8,10 @@ export const addUsersApi = async (payload) => {
   console.log(payload);
   return await axios.post("http://localhost:8080/user", payload);
 };
-// import axios from "axios";
+
+// http://13.209.43.135:8080/
+
+//eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NjcxMzg2NjZ9.aZB5nay86W-dF_xR-2TXR4fiei2zA69CFpnx12yuQYS5FZDyYYhSJKjU4Ic3Yxxznyx5OBMzK8oOnV8rthre9g
 
 // const api = axios.create({
 //   baseURL: "http://localhost:8080/user",

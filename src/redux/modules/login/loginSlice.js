@@ -28,6 +28,7 @@ export const __addUsers = createAsyncThunk(
 const initialState = {
   user: [],
   isLoading: false,
+  error: null,
 };
 
 const loginiSlice = createSlice({
