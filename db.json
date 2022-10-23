@@ -46,44 +46,5 @@
       "menuCnt": 1
     }
   ],
-  "user": [
-    {
-      "id": "123",
-      "password": "123assdasd",
-      "isRestaurant": true,
-      "restaurantName": "asdasdasd",
-      "nickName": "123"
-    },
-    {
-      "id": "1234",
-      "password": "123assdasdc",
-      "isRestaurant": false,
-      "restaurantName": "asdasdasd",
-      "nickName": "123"
-    },
-    {
-      "id": "123123",
-      "password": "rla123dlf!",
-      "isRestaurant": true,
-      "restaurantName": "dasdasd",
-      "nickName": "asdasd"
-    },
-    {
-      "id": "123123e4",
-      "password": "rla123dlf!",
-      "isRestaurant": false,
-      "restaurantName": "dasdasd",
-      "nickName": "asdasd"
-    },
-    {
-      "id": "12314124",
-      "password": "rla123dlf!",
-      "isRestaurant": false
-    },
-    {
-      "id": "2124124asd",
-      "password": "rla123dlf!",
-      "isRestaurant": true
-    }
-  ]
+  "user": []
 }

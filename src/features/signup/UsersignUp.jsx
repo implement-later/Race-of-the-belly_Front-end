@@ -243,18 +243,31 @@ function UsersignUp() {
 
     dispatch(__addUsers(input));
 
-    // setUsername("");
-    // setPassword("");
-    // setRestaurantName("");
-    // setPasswordConfirm("");
+    setUsername("");
+    setPassword("");
+    setRestaurantName("");
+    setPasswordConfirm("");
+    navigate("/");
   };
 
   // username: 닉네임은 최소 4자 이상, 12자 이하 알파벳 대소문자(a-z, A-Z), 숫자(0-9)로 구성됩니다. ^[a-zA-Z0-9]{4,12}$
 
   // password: 비밀번호는 최소 8자 이상, 20자 이하 알파벳 대소문자, 숫자(0-9), 특수문자로 구성됩니다. ^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,20}$
 
-  const passwordRegEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,20}$/; // 비밀번호는 최소 8자 이상, 20자 이하 알파벳 대소문자, 숫자(0-9), 특수문자로 구성됩니다.
+  const usernameRegEx = /^[a-zA-Z0-9]{4,12}$/;
 
+  const usernameCheck = (username) => {
+    if (username.match(usernameRegEx) === null) {
+      setIsName(false);
+      setUsernameMessage("아이디 형식을 확인해주세요");
+      return;
+    } else {
+      setIsName(true);
+      setUsernameMessage("아이디 형식이 맞아요");
+    }
+  };
+
+  const passwordRegEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,20}$/;
   const passwordCheck = (password) => {
     if (password.match(passwordRegEx) === null) {
       setIsPassword(false);
@@ -288,15 +301,24 @@ function UsersignUp() {
         <label>Username : </label>
         <input
           type="text"
-          // pattern="/^[a-z]+[a-z0-9]{5,19}$/g"
           name="username"
           placeholder="username"
           onChange={(e) => {
             setUsername(e.target.value);
+            usernameCheck(e.target.value);
           }}
           value={username || ""}
           required
         />
+        {username.length > 0 && (
+          <span className={`message ${isName ? "success" : "error"}`}>
+            {usernameMessage}
+          </span>
+        )}
+        <br />
+        <span>
+          닉네임은 최소 4자 이상, 12자 이하 알파벳 대소문자, 숫자로 구성됩니다.
+        </span>
         <br />
         <label>Nick Name : </label>
         <input
@@ -327,6 +349,11 @@ function UsersignUp() {
             {passwordMessage}
           </span>
         )}
+        <br />
+        <span>
+          비밀번호는 최소 8자 이상, 20자 이하 알파벳 대소문자, 숫자, 특수문자로
+          구성됩니다.
+        </span>
         <br />
         <label htmlFor="password">Password Confirm : </label>
         <input
@@ -365,9 +392,7 @@ function UsersignUp() {
           />
         ) : null}
         <br />
-        <button onClick={() => {}} type="submit">
-          Sign up
-        </button>
+        <button type="submit">Sign up</button>
       </form>
     </Wrapper>
   );
