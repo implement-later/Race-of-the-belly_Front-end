@@ -150,6 +150,11 @@
       "id": "ㅁㄴㅇ",
       "password": "sadd",
       "isRestaurant": false
+    },
+    {
+      "id": "sadas",
+      "password": "asdasd",
+      "isRestaurant": false
     }
   ]
 }
