@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import CustomerOrderCard from "../../components/CustomerOrderCard";
 import Button from "../../elem/Button";
-import { __getMenuListThunk } from "../../redux/modules/menulistSlice";
+import { __getMenuByIdThunk } from "../../redux/modules/menulistSlice";
 
 const OrderItemList = () => {
   // 레스토랑 id를 받아서 그 id값으로 restaurant가 가진 menulist를 받아온다.
@@ -18,7 +18,7 @@ const OrderItemList = () => {
   console.log(orderList);
 
   useEffect(() => {
-    dispatch(__getMenuListThunk(1));
+    dispatch(__getMenuByIdThunk(1));
   }, [dispatch]);
 
   const onChangeHandler = (e) => {

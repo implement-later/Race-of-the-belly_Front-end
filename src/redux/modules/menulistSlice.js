@@ -4,12 +4,13 @@ import thunk from "redux-thunk";
 import { current } from "@reduxjs/toolkit";
 // import { serverUrl } from "../api";
 
-export const __getMenuListThunk = createAsyncThunk(
+// restaurant id로 메뉴조회
+export const __getMenuByIdThunk = createAsyncThunk(
   "GET_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/retaurant?restaurantId=${payload}`
+        `http://localhost:8080/restaurant?restaurantId=${payload}`
       );
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
@@ -18,21 +19,53 @@ export const __getMenuListThunk = createAsyncThunk(
   }
 );
 
-export const __addMenuThunk = createAsyncThunk(
-  "GET_MENU_LIST",
+// restaurant Id로 restaurant를 특정지어서 메뉴를 넣어주는데
+// 그냥 restaurant에만 넣어줘도 될 듯
+export const __addMenuByIdThunk = createAsyncThunk(
+  "ADD_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
       const { data } = await axios.post(
-        `http://localhost:8080/retaurant?restaurantId=${payload.restaurantId}`,
+        `http://localhost:8080/restaurant?restaurantId=${payload.restaurantId}`,
         payload
       );
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
     }
   }
 );
+
+export const __delMenuByMenuIdThunk = createAsyncThunk(
+  "DEL_MENU_LIST",
+  async (payload, thunkAPI) => {
+    try {
+      await axios.delete(
+        `http://localhost:8080/restaurant/${payload}`,
+        payload
+      );
+      return thunkAPI.fulfillWithValue(payload);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.code);
+    }
+  }
+);
+
+// export const __updateMenuThunk = createAsyncThunk(
+//   "UPDATE_MENU_LIST",
+//   async (payload, thunkAPI) => {
+//     try {
+//       await axios.patch(
+//         `http://localhost:8080/restaurant/${payload.id}`,
+//         payload
+//       );
+//       console.log(payload);
+//       return thunkAPI.fulfillWithValue(payload);
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.code);
+//     }
+//   }
+// );
 
 const initialState = {
   menulist: {
@@ -52,27 +85,42 @@ export const menulistSlice = createSlice({
   reducers: {},
   extraReducers: {
     // 메뉴 조회
-    [__getMenuListThunk.pending]: (state) => {
-      state.menulist.isLoading = true;
+    [__getMenuByIdThunk.pending]: (state) => {
+      state.menulistByResId.isLoading = true;
     },
-    [__getMenuListThunk.fulfilled]: (state, action) => {
-      state.menulist.isLoading = false;
-      state.menulist.data.menulist = action.payload;
+    [__getMenuByIdThunk.fulfilled]: (state, action) => {
+      state.menulistByResId.isLoading = false;
+      state.menulistByResId.data = action.payload;
     },
-    [__getMenuListThunk.rejected]: (state, action) => {
-      state.menulist.isLoading = false;
-      state.menulist.error = action.payload;
+    [__getMenuByIdThunk.rejected]: (state, action) => {
+      state.menulistByResId.isLoading = false;
+      state.menulistByResId.error = action.payload;
     },
 
     // 특정 메뉴추가
-    [__addMenuThunk.pending]: (state) => {
+    [__addMenuByIdThunk.pending]: (state) => {
       state.menulistByResId.isLoading = true;
     },
-    [__addMenuThunk.fulfilled]: (state, action) => {
+    [__addMenuByIdThunk.fulfilled]: (state, action) => {
       state.menulistByResId.isLoading = false;
       state.menulistByResId.data.push(action.payload);
     },
-    [__addMenuThunk.rejected]: (state, action) => {
+    [__addMenuByIdThunk.rejected]: (state, action) => {
+      state.menulistByResId.isLoading = false;
+      state.menulistByResId.error = action.payload;
+    },
+    // 메뉴 삭제
+    [__delMenuByMenuIdThunk.pending]: (state) => {
+      state.menulistByResId.isLoading = true;
+    },
+    [__delMenuByMenuIdThunk.fulfilled]: (state, action) => {
+      state.menulistByResId.isLoading = false;
+      const target = state.menulistByResId.data.findIndex(
+        (menu) => menu.id === action.payload
+      );
+      state.menulistByResId.data.splice(target, 1);
+    },
+    [__delMenuByMenuIdThunk.rejected]: (state, action) => {
       state.menulistByResId.isLoading = false;
       state.menulistByResId.error = action.payload;
     },
