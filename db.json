@@ -160,11 +160,6 @@
       "id": "asd",
       "password": "asd",
       "isRestaurant": false
-    },
-    {
-      "id": "asfsasf",
-      "password": "asfasfs",
-      "isRestaurant": true
     }
   ]
 }
