@@ -17,7 +17,9 @@ const Router = () => {
       <Routes>
         {/* 회원가입, 로그인 */}
         {/* <Route path="/" element={<Example />} /> */}
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+        {/* <Route path="/" element={<Example />} /> */}
+        <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
         {/* user 접근가능 */}

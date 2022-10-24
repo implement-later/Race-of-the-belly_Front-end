@@ -1,11 +1,7 @@
-import React from "react";
+import Userlogin from "../features/login/Userlogin";
 
 function Login() {
-  return (
-    <div>
-      <h1>hi</h1>
-    </div>
-  );
+  return <Userlogin />;
 }
 
 export default Login;

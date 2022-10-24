@@ -1,7 +1,6 @@
-import React from "react";
+import UsersignUp from "../features/signup/UsersignUp";
 
 function SignUp() {
-  return <div>SignUp</div>;
+  return <UsersignUp />;
 }
-
 export default SignUp;
