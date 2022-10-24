@@ -51,21 +51,21 @@ export const __delMenuByMenuIdThunk = createAsyncThunk(
   }
 );
 
-// export const __updateMenuThunk = createAsyncThunk(
-//   "UPDATE_MENU_LIST",
-//   async (payload, thunkAPI) => {
-//     try {
-//       await axios.patch(
-//         `http://localhost:8080/restaurant/${payload.id}`,
-//         payload
-//       );
-//       console.log(payload);
-//       return thunkAPI.fulfillWithValue(payload);
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.code);
-//     }
-//   }
-// );
+export const __updateMenuThunk = createAsyncThunk(
+  "UPDATE_MENU_LIST",
+  async (payload, thunkAPI) => {
+    try {
+      await axios.patch(
+        `http://localhost:8080/restaurant/${payload.id}`,
+        payload
+      );
+      console.log(payload);
+      return thunkAPI.fulfillWithValue(payload);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.code);
+    }
+  }
+);
 
 const initialState = {
   menulist: {
@@ -123,6 +123,22 @@ export const menulistSlice = createSlice({
     [__delMenuByMenuIdThunk.rejected]: (state, action) => {
       state.menulistByResId.isLoading = false;
       state.menulistByResId.error = action.payload;
+    },
+
+    // 메뉴 수정
+    [__updateMenuThunk.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__updateMenuThunk.fulfilled]: (state, action) => {
+      const target = state.menulistByResId.data.findIndex(
+        (comment) => comment.id === action.payload.id
+      );
+      state.isLoading = false;
+      state.menulistByResId.data.splice(target, 1, action.payload);
+    },
+    [__updateMenuThunk.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });

@@ -4,12 +4,12 @@ import { Form } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../elem/Button";
 import Input from "../elem/Input";
-import { __delMenuByMenuIdThunk } from "../redux/modules/menulistSlice";
+import Wrapper from "../elem/Wrapper";
 import {
-  clearMenu,
-  __getMenuThunk,
+  __delMenuByMenuIdThunk,
   __updateMenuThunk,
-} from "../redux/modules/menuSlice";
+} from "../redux/modules/menulistSlice";
+import { __getMenuThunk } from "../redux/modules/menuSlice";
 
 const OwnerMenuCard = ({ menu }) => {
   const dispatch = useDispatch();
@@ -20,11 +20,7 @@ const OwnerMenuCard = ({ menu }) => {
   const [updateMenu, setUpdateMenu] = useState();
 
   const { menuName, price } = menuObj;
-  // console.log(menu);
-  useEffect(() => {
-    dispatch(__getMenuThunk(menu.id));
-    return () => dispatch(clearMenu());
-  }, [dispatch, menu.id]);
+  // console.log(menuItem);
 
   useEffect(() => {
     setUpdateMenu(menuItem);
@@ -35,47 +31,122 @@ const OwnerMenuCard = ({ menu }) => {
     setMenuObj({ ...menuObj, [name]: value });
   };
 
-  const editChangeHandler = () => {
-    if (menuName.trim() === "" || price.trim() === "") {
+  // 완료하기 버튼 누를시
+  const CompleteChangeHandler = () => {
+    if (menuName.trim() === "") {
       return alert("입력된 내용이 없습니다.");
     }
     if (isEdit) {
+      console.log(menuObj);
       dispatch(__updateMenuThunk({ ...menuObj }));
     }
-    setIsEdit(!isEdit);
+    setIsEdit(false);
+  };
+  // 수정 버튼 누를시
+  const editChangeHandler = () => {
+    setIsEdit(true);
+    dispatch(__getMenuThunk(menu.id));
   };
 
   const delBtnHandler = () => {
-    dispatch(__delMenuByMenuIdThunk(menu.id));
+    const result = window.confirm("삭제하시겠습니까?");
+    if (result) {
+      dispatch(__delMenuByMenuIdThunk(menu.id));
+    } else {
+      return;
+    }
   };
 
   return (
     <>
-      <Stdiv>
-        {!isEdit ? (
-          <>
-            <div>{menuItem.menuName}</div> <div>{menuItem.price}원</div>
-            <Button onClick={delBtnHandler}>삭제</Button>
-            <Button onClick={editChangeHandler}>수정</Button>
-          </>
-        ) : (
-          <>
-            <Input type="text" name="menuName" onChange={onChangeHandler} />
-            <Input type="number" name="price" onChange={onChangeHandler} />
-            <Button type="submit" onClick={editChangeHandler}>
-              완료
-            </Button>
-            {/* <Button onClick={delBtnHandler}>삭제</Button> */}
-          </>
-        )}
-      </Stdiv>
+      {!isEdit ? (
+        <StLi>
+          <StSpan>{menu.menuName}</StSpan> <StSpan>{menu.price}원</StSpan>
+          <StBtnDiv>
+            <CountBtn onClick={delBtnHandler}>🗑️</CountBtn>
+            <CountBtn onClick={editChangeHandler}>✏️</CountBtn>
+          </StBtnDiv>
+        </StLi>
+      ) : (
+        <>
+          <StLi>
+            <StInput
+              type="text"
+              name="menuName"
+              onChange={onChangeHandler}
+              value={menuName}
+            />
+            <StInput
+              type="number"
+              name="price"
+              onChange={onChangeHandler}
+              value={price}
+            />
+            <StBtnDiv>
+              <CountBtn type="submit" onClick={CompleteChangeHandler}>
+                ✅
+              </CountBtn>
+              {/* <CountBtn onClick={delBtnHandler}>삭제</CountBtn> */}
+            </StBtnDiv>
+          </StLi>
+        </>
+      )}
     </>
   );
 };
 
 export default OwnerMenuCard;
 
-const Stdiv = styled.div`
+// const Stdiv = styled.div`
+//   display: flex;
+//   font-size: 30px;
+// `;
+const StLi = styled.li`
   display: flex;
-  font-size: 30px;
+  font-size: 20px;
+  height: 50px;
+  align-items: center;
+  background-color: ${(props) => props.theme.mainC};
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: 0.2s ease-in-out;
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+`;
+const StSpan = styled(Wrapper)`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+const CountBtn = styled(Button)`
+  display: flex;
+  /* color: ${(props) => props.theme.subC}; */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  font-size: 20px;
+`;
+const StBtnDiv = styled(Wrapper)`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+const StInput = styled(Input)`
+  padding: 0 30px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  font-size: 20px;
+
+  /* border-bottom: 1px solid ${(props) => props.theme.subC};
+  font-size: 20px; */
 `;

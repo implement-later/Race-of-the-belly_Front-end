@@ -13,5 +13,5 @@ const Layoutdiv = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  margin-top: 50px;
+  margin: 50px 0;
 `;
