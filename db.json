@@ -105,11 +105,6 @@
       "id": "123",
       "password": "123",
       "isRestaurant": false
-    },
-    {
-      "id": "124",
-      "password": "124",
-      "isRestaurant": true
     }
   ]
 }
