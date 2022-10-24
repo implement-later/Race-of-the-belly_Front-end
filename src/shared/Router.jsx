@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Example from "../pages/Example";
 import Login from "../pages/Login";
 import Main from "../pages/Main";
 import OrderDetail from "../pages/OrderDetail";
@@ -16,11 +15,10 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         {/* 회원가입, 로그인 */}
-        <Route path="/" element={<Example />} />
+        <Route path="/" element={<Login />} />
         {/* <Route path="/login" element={<Login />} /> */}
         {/* <Route path="/" element={<Login />} /> */}
         <Route path="/signup" element={<SignUp />} />
-
         {/* user 접근가능 */}
         <Route path="/restaurant-list" element={<Main />} />
         <Route path="/order/:restaurantId" element={<UserOrder />} />

@@ -1,28 +1,28 @@
 {
-  "restaurant-list": [
+  "restaurantlist": [
     {
       "restaurantName": "노걸대",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 1
+      "createdAt": "1",
+      "id": "1"
     },
     {
       "restaurantName": "원할머니",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 2
+      "createdAt": "2",
+      "id": "5"
     },
     {
       "restaurantName": "맥도날드",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 3
+      "createdAt": "3",
+      "id": "3"
     },
     {
       "restaurantName": "장충동",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 4
+      "createdAt": "4",
+      "id": " 4"
     }
   ],
   "restaurant": [
@@ -100,5 +100,11 @@
       }
     ]
   ],
-  "user": []
+  "user": [
+    {
+      "id": "123",
+      "password": "123",
+      "isRestaurant": false
+    }
+  ]
 }

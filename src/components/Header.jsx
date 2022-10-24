@@ -1,37 +1,52 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../elem/Button";
+// import Button from "../elem/Button";
 
 const Header = () => {
   return (
-    <StDiv>
-      <div>LOGO</div>
-      <span></span>
-      <StBtn>Logout</StBtn>
-    </StDiv>
+    <>
+      <StDiv>
+        <Img src={process.env.PUBLIC_URL + "/img/logo.png"}></Img>
+        <Img1 src={process.env.PUBLIC_URL + "/img/logo2.png"}></Img1>
+        <Button>Logo out</Button>
+      </StDiv>
+    </>
   );
 };
 
 export default Header;
 
+const Img = styled.img`
+  width: 150px;
+  height: 99px;
+  object-fit: cover;
+`;
+
+const Img1 = styled.img`
+  width: 200px;
+  height: 80px;
+  margin: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
 const StDiv = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100px;
   border-bottom: 1px solid #fcbe32;
   justify-content: space-between;
-  padding-right: 30px;
 `;
-const StBtn = styled(Button)`
+
+const Button = styled.button`
+  background: white;
+  border-radius: 20px;
   height: 50px;
   width: 100px;
-  background-color: white;
-  border: 1px solid ${(props) => props.theme.subC};
-  border-radius: 20px;
-  transition: 0.5s ease-in-out;
+  border: 1px solid #fcbe32;
+  margin: 20px 30px;
   :hover {
     color: white;
-    background-color: ${(props) => props.theme.subC};
+    background: #fcbe32;
   }
 `;
