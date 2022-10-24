@@ -1,9 +1,28 @@
 {
-  "restaurant-list": [
+  "restaurantlist": [
     {
       "restaurantName": "노걸대",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0"
+      "createdAt": "0",
+      "id": 1
+    },
+    {
+      "restaurantName": "김밥천국",
+      "thumbnail": "dflsjakfsl",
+      "createdAt": "0",
+      "id": 2
+    },
+    {
+      "restaurantName": "도시락",
+      "thumbnail": "dflsjakfsl",
+      "createdAt": "0",
+      "id": 3
+    },
+    {
+      "restaurantName": "국밥",
+      "thumbnail": "dflsjakfsl",
+      "createdAt": "0",
+      "id": 4
     }
   ],
   "retaurant": [
@@ -46,5 +65,53 @@
       "menuCnt": 1
     }
   ],
-  "user": []
+  "user": [
+    {
+      "id": "ㅁㄴㄴㅇㅁㄴㅇ",
+      "password": "zxczxc",
+      "isRestaurant": false
+    },
+    {
+      "id": "23123",
+      "password": "asfasfzxczxc",
+      "isRestaurant": true
+    },
+    {
+      "id": "asdasd",
+      "password": "zxczxc1",
+      "isRestaurant": false
+    },
+    {
+      "id": "dadsassd",
+      "password": "sadasd123",
+      "isRestaurant": false
+    },
+    {
+      "id": "214142",
+      "password": "124124",
+      "isRestaurant": true
+    },
+    {
+      "id": "sadasdas",
+      "password": "asdasdasd",
+      "isRestaurant": false
+    },
+    {
+      "id": "rla123dlf123",
+      "password": "rla123dlf!",
+      "isRestaurant": true,
+      "restaurantName": "super",
+      "nickName": "kki"
+    },
+    {
+      "id": "rla123dlf",
+      "password": "rla123dlf!",
+      "isRestaurant": false
+    },
+    {
+      "id": "dasd",
+      "password": "asdassd",
+      "isRestaurant": false
+    }
+  ]
 }

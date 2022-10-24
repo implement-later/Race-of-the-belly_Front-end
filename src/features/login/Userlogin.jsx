@@ -28,7 +28,11 @@ function Userlogin() {
     if (password === "") return alert("패스워드를 입력하세요");
 
     dispatch(__addUsers(input));
-
+    if (isRestaurant === false) {
+      navigate("/restaurant-list");
+    } else {
+      navigate("/restaurant/:id");
+    }
     setUsername("");
     setPassword("");
   };
@@ -77,14 +81,7 @@ function Userlogin() {
           Owner check
           <br />
         </p>
-        <button
-          type="submit"
-          // onClick={() => {
-          //   navigate("/");
-          // }}
-        >
-          Login
-        </button>
+        <button type="submit">Login</button>
         <br />
         <button
           onClick={() => {
