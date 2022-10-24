@@ -9,6 +9,9 @@ import { __addMenuByIdThunk } from "../../redux/modules/menulistSlice";
 const AddMenuForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [files, setFiles] = useState("");
+  const [preview, setPreview] = useState("");
+
   const [menuObj, setMenuObj] = useState({
     menuName: "",
     price: "",
@@ -20,9 +23,14 @@ const AddMenuForm = () => {
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-
     setMenuObj({ ...menuObj, [name]: value });
     console.log(menuObj);
+  };
+
+  const onImgChange = async (e) => {
+    const formData = new FormData();
+    formData.append("image", e.target.file[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
   const onSubmitHandler = (e) => {
@@ -33,8 +41,13 @@ const AddMenuForm = () => {
   return (
     <StContainerDiv>
       <StDiv>
-        <img src="" alt="" />
-        <Input type="file"></Input>
+        <img src={preview} />
+        <Input
+          type="file"
+          name="file"
+          accept="image/*"
+          onChange={onImgChange}
+        ></Input>
       </StDiv>
       <Stform onSubmit={onSubmitHandler}>
         <StInput
