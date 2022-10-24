@@ -3,26 +3,26 @@
     {
       "restaurantName": "노걸대",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 1
+      "createdAt": "1",
+      "id": "1"
     },
     {
       "restaurantName": "원할머니",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 2
+      "createdAt": "2",
+      "id": "5"
     },
     {
       "restaurantName": "맥도날드",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 3
+      "createdAt": "3",
+      "id": "3"
     },
     {
       "restaurantName": "장충동",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 4
+      "createdAt": "4",
+      "id": " 4"
     }
   ],
   "restaurant": [
@@ -111,51 +111,32 @@
   ],
   "user": [
     {
-      "id": "ㅁㄴㄴㅇㅁㄴㅇ",
-      "password": "zxczxc",
-      "isRestaurant": false
-    },
-    {
-      "id": "23123",
-      "password": "asfasfzxczxc",
-      "isRestaurant": true
-    },
-    {
-      "id": "asdasd",
-      "password": "zxczxc1",
-      "isRestaurant": false
-    },
-    {
-      "id": "dadsassd",
-      "password": "sadasd123",
-      "isRestaurant": false
-    },
-    {
-      "id": "214142",
-      "password": "124124",
-      "isRestaurant": true
-    },
-    {
-      "id": "sadasdas",
-      "password": "asdasdasd",
-      "isRestaurant": false
-    },
-    {
-      "id": "rla123dlf123",
+      "id": "safaf",
       "password": "rla123dlf!",
-      "isRestaurant": true,
-      "restaurantName": "super",
-      "nickName": "kki"
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "2424"
     },
     {
-      "id": "rla123dlf",
+      "id": "asfasff",
       "password": "rla123dlf!",
-      "isRestaurant": false
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "asfafas"
     },
     {
-      "id": "dasd",
-      "password": "asdassd",
-      "isRestaurant": false
+      "id": "adasd",
+      "password": "rla123dlf!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "asdasd"
+    },
+    {
+      "id": "123",
+      "password": "rla123dlf!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "123123"
     }
   ]
 }

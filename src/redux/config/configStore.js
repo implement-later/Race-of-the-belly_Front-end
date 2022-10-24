@@ -7,6 +7,6 @@ import restaurantlist from "../modules/restaurantlistSlice/restaurantSlice";
 import menu from "../modules/menuSlice";
 
 const store = configureStore({
-  reducer: { restaurant, user, menulist, orderdetail, menu },
+  reducer: { restaurant, user, menulist, orderdetail, menu, restaurantlist },
 });
 export default store;

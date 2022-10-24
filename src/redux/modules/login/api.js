@@ -5,6 +5,7 @@ export const getUsersApi = async () => {
 };
 
 export const addUsersApi = async (payload) => {
+  console.log(payload);
   return await axios.post("http://localhost:8080/user", payload);
 };
 
