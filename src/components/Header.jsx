@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <>
       <StDiv>
-        <Img src="img/logo.png"></Img>
-        <Img1 src="img/logo2.png"></Img1>
+        <Img src={process.env.PUBLIC_URL + "/img/logo.png"}></Img>
+        <Img1 src={process.env.PUBLIC_URL + "/img/logo2.png"}></Img1>
         <Button>Logo out</Button>
       </StDiv>
     </>

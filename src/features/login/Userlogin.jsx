@@ -56,7 +56,7 @@ function Userlogin() {
               <input
                 type="text"
                 name="username"
-                placeholder="아이디"
+                placeholder=" "
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
@@ -69,7 +69,7 @@ function Userlogin() {
               <input
                 type="password"
                 name="password"
-                placeholder="비밀번호"
+                placeholder=" "
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}

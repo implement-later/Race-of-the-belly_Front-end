@@ -155,6 +155,16 @@
       "id": "sadas",
       "password": "asdasd",
       "isRestaurant": false
+    },
+    {
+      "id": "asd",
+      "password": "asd",
+      "isRestaurant": false
+    },
+    {
+      "id": "asfsasf",
+      "password": "asfasfs",
+      "isRestaurant": true
     }
   ]
 }

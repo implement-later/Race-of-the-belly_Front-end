@@ -21,18 +21,15 @@ const Router = () => {
         {/* <Route path="/" element={<Example />} /> */}
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-
         {/* user 접근가능 */}
         <Route path="/restaurant-list" element={<Main />} />
-        <Route path="/order" element={<UserOrder />} />
-
+        <Route path="/order/:restaurantId" element={<UserOrder />} />
         {/* owner 접근가능 */}
-        <Route path="/restaurant/:id" element={<OwnerMenu />} />
-        <Route path="/restaurant/add/:id" element={<OwnerAddMenu />} />
-        <Route path="/:id/menu-list" element={<OwnerOrders />} />
-
+        <Route path="/order/:resturantid" element={<OwnerMenu />} />
+        <Route path="/order/menu/:id" element={<OwnerAddMenu />} />
+        <Route path="/owner/orders" element={<OwnerOrders />} /> {/* 내부분 */}
         {/* 둘 다 접근 가능 */}
-        <Route path="/order/:orderid" element={<OrderDetail />} />
+        <Route path="/orderdetail/:orderid" element={<OrderDetail />} />
         {/* <Route path="/order/:id" element={<UserOrderDetail />} /> */}
       </Routes>
     </BrowserRouter>
