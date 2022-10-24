@@ -18,21 +18,6 @@ export const __getMenuThunk = createAsyncThunk(
   }
 );
 
-export const __updateMenuThunk = createAsyncThunk(
-  "UPDATE_MENU",
-  async (payload, thunkAPI) => {
-    try {
-      await axios.patch(
-        `http://localhost:8080/restaurant/${payload.id}`,
-        payload
-      );
-      return thunkAPI.fulfillWithValue(payload);
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.code);
-    }
-  }
-);
-
 const initialState = {
   menu: {},
   error: null,
@@ -55,18 +40,6 @@ export const menuSlice = createSlice({
       state.menu = action.payload;
     },
     [__getMenuThunk.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-
-    [__updateMenuThunk.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [__updateMenuThunk.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.menu = action.payload;
-    },
-    [__updateMenuThunk.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

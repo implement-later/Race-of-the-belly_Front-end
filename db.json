@@ -35,20 +35,6 @@
     },
     {
       "menuName": "족발",
-      "restaurantName": "노걸대",
-      "price": 6000,
-      "restaurantId": 1,
-      "id": 2
-    },
-    {
-      "menuName": "보쌈",
-      "restaurantName": "원할머니",
-      "price": 12000,
-      "restaurantId": 2,
-      "id": 3
-    },
-    {
-      "menuName": "족발",
       "restaurantName": "원할머니",
       "price": 6000,
       "restaurantId": 2,
@@ -67,45 +53,50 @@
       "price": 6000,
       "restaurantId": 3,
       "id": 6
+    },
+    {
+      "menuName": "바밤바",
+      "price": "1212",
+      "desc": "누가누가바",
+      "restaurantId": "1",
+      "id": 7
+    },
+    {
+      "menuName": "초밥",
+      "price": "200000",
+      "desc": "초초밥",
+      "restaurantId": "1",
+      "id": 8
     }
   ],
   "order": [
     [
       {
-        "orderId": 5,
-        "menuName": "감자탕",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "12000",
-        "menuCnt": 1,
-        "id": 1
+        "orderId": 1,
+        "menuName": "123",
+        "restaurantName": "노걸대",
+        "price": "123",
+        "restaurantId": 1,
+        "id": 1,
+        "menuCnt": 1
       },
       {
-        "orderId": 5,
-        "menuName": "밥",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "18000",
-        "menuCnt": 3,
-        "id": 2
+        "orderId": 1,
+        "menuName": "족발",
+        "restaurantName": "노걸대",
+        "price": 6000,
+        "restaurantId": 1,
+        "id": 2,
+        "menuCnt": 1
       },
       {
-        "orderId": 5,
-        "menuName": "떡볶이",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "10000",
-        "menuCnt": 2,
-        "id": 3
-      },
-      {
-        "orderId": 6,
-        "menuName": "떡볶이",
-        "images": "dskflasjf",
-        "thumbnail": "djsklfajdkls",
-        "menuPrice": "10000",
-        "menuCnt": 2,
-        "id": 4
+        "orderId": 1,
+        "menuName": "바밤바",
+        "price": "1212",
+        "desc": "누가누가바",
+        "restaurantId": "1",
+        "id": 7,
+        "menuCnt": 1
       }
     ]
   ],
