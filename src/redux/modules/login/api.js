@@ -4,6 +4,11 @@ export const getUsersApi = async () => {
   return await axios.get("http://localhost:8080/user");
 };
 
+// export const addUsersApi = async (payload) => {
+//   console.log(payload);
+//   return await axios.post("http://localhost:8080/user", payload);
+// };
+
 export const addUsersApi = async (payload) => {
   console.log(payload);
   return await axios.post("http://localhost:8080/user", payload);

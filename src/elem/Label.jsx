@@ -8,12 +8,12 @@ const Label = (props) => {
 export default Label;
 
 const StLabel = styled.label`
-  /* display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.textBoxC};
   border-radius: 5px;
   width: ${(props) => props.wd};
   height: ${(props) => props.hg};
-  margin: ${(props) => props.mg}; */
+  margin: ${(props) => props.mg};
 `;

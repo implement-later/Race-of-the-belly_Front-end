@@ -1,28 +1,28 @@
 {
-  "restaurant-list": [
+  "restaurantlist": [
     {
       "restaurantName": "노걸대",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 1
+      "createdAt": "1",
+      "id": "1"
     },
     {
       "restaurantName": "원할머니",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 2
+      "createdAt": "2",
+      "id": "5"
     },
     {
       "restaurantName": "맥도날드",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 3
+      "createdAt": "3",
+      "id": "3"
     },
     {
       "restaurantName": "장충동",
       "thumbnail": "dflsjakfsl",
-      "createdAt": "0",
-      "id": 4
+      "createdAt": "4",
+      "id": " 4"
     }
   ],
   "restaurant": [
@@ -109,5 +109,47 @@
       }
     ]
   ],
-  "user": []
+  "user": [
+    {
+      "id": "safaf",
+      "password": "rla123dlf!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "2424"
+    },
+    {
+      "id": "asfasff",
+      "password": "rla123dlf!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "asfafas"
+    },
+    {
+      "id": "adasd",
+      "password": "rla123dlf!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "asdasd"
+    },
+    {
+      "id": "123",
+      "password": "rla123dlf!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "123123"
+    },
+    {
+      "payload": {
+        "id": "123",
+        "password": "asdasd",
+        "isRestaurant": false
+      },
+      "id": "Q7QWPou"
+    },
+    {
+      "id": "ㅁㄴㅇ",
+      "password": "sadd",
+      "isRestaurant": false
+    }
+  ]
 }
