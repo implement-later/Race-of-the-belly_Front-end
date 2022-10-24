@@ -4,7 +4,7 @@ import Button from "../../elem/Button";
 import Input from "../../elem/Input";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { __addMenuThunk } from "../../redux/modules/menulistSlice";
+import { __addMenuByIdThunk } from "../../redux/modules/menulistSlice";
 
 const AddMenuForm = () => {
   const { id } = useParams();
@@ -13,7 +13,7 @@ const AddMenuForm = () => {
     menuName: "",
     price: "",
     desc: "",
-    retaurantId: id,
+    restaurantId: id,
   });
 
   const { menuName, price, desc } = menuObj;
@@ -27,7 +27,7 @@ const AddMenuForm = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(__addMenuThunk(menuObj));
+    dispatch(__addMenuByIdThunk(menuObj));
   };
 
   return (

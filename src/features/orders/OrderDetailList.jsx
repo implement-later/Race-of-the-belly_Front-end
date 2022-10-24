@@ -8,6 +8,8 @@ const OrderDetailList = () => {
   //   const { id } = useParams();
   const orderdetail = useSelector((state) => state.orderdetail.orderdetail);
   const dispatch = useDispatch();
+
+  //retaurant id로 메뉴조회
   useEffect(() => {
     dispatch(__getOrderDetailThunk(5));
   }, [dispatch]);
