@@ -16,7 +16,7 @@ const OrderItemList = () => {
   // 레스토랑 id를 받아서 그 id값으로 restaurant가 가진 menulist를 받아온다.
   const { restaurantId } = useParams();
   const menuList = useSelector((state) => state.orderdetail.orderingList);
-  console.log(menuList);
+
   const dispatch = useDispatch();
 
   // 초기에 레스토랑 id에 따라 보여질 메뉴 dispatch해서 reducer의 orderingList 배열에 넣어준다.

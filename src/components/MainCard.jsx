@@ -6,12 +6,27 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const MainCard = () => {
+  const dispatch = useDispatch();
+  const { restaurantName } = useParams;
+  const restaurantlist = useSelector(
+    (state) => state.restaurantlist.restaurantlist
+  );
+  console.log(restaurantlist);
+
+  useEffect(() => {
+    dispatch(__getList(restaurantName));
+  }, [dispatch, restaurantName]);
+
   const navigate = useNavigate();
-  // const { restaurantName } = useParams();
-  // const list = useSelector((state) => state.restaurantlist.restaurantlist);
   // const dispatch = useDispatch();
+  // const list = useSelector((state) => state.restaurantlist.restaurantlist);
+
+  // const initialState = { ...menu };
+  // const [menuObj, setMenuObj] = useState(initialState);
+  // const { restaurantName, thumbnail } = menuObj;
+  // // const dispatch = useDispatch();
   // console.log(list);
-  // dispatch(__getList());
+
   // const [list, setList] = useState(null);
   // useEffect(() => {
   //   dispatch(__getList(list));
@@ -33,11 +48,11 @@ const MainCard = () => {
         hg="200px"
         inline="background: #e1eef6 ; "
         onClick={() => {
-          navigate("order");
+          navigate("/order/:restaurantId");
         }}
       >
         <Stdiv>
-          <Img>이미지</Img>
+          <Img>123{restaurantName}</Img>
           <StDiv1>asd</StDiv1>
         </Stdiv>
       </StDiv>
