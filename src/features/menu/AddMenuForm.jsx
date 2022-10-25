@@ -10,7 +10,7 @@ const AddMenuForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [files, setFiles] = useState("");
-  const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState();
 
   const [menuObj, setMenuObj] = useState({
     menuName: "",
@@ -27,10 +27,15 @@ const AddMenuForm = () => {
     console.log(menuObj);
   };
 
-  const onImgChange = async (e) => {
-    const formData = new FormData();
-    formData.append("image", e.target.file[0]);
-    setPreview(URL.createObjectURL(e.target.files[0]));
+  const onImgChange = (e) => {
+    if (e.target.files) {
+      const uploadFile = e.target.files[0];
+      const formData = new FormData();
+      formData.append("files", uploadFile);
+      setMenuObj({ ...menuObj, img: formData });
+      setPreview(URL.createObjectURL(uploadFile));
+      console.log(preview);
+    }
   };
 
   const onSubmitHandler = (e) => {
@@ -41,7 +46,7 @@ const AddMenuForm = () => {
   return (
     <StContainerDiv>
       <StDiv>
-        <img src={preview} />
+        <img src="" />
         <Input
           type="file"
           name="file"

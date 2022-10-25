@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../elem/Button";
 import Input from "../elem/Input";
@@ -12,6 +12,7 @@ import {
 import { __getMenuThunk } from "../redux/modules/menuSlice";
 
 const OwnerMenuCard = ({ menu }) => {
+  const { restaurantId } = useParams();
   const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
   const menuItem = useSelector((state) => state.menu.menu);
@@ -37,6 +38,7 @@ const OwnerMenuCard = ({ menu }) => {
       return alert("입력된 내용이 없습니다.");
     }
     if (isEdit) {
+      setMenuObj(delete menuObj.menuId);
       console.log(menuObj);
       dispatch(__updateMenuThunk({ ...menuObj }));
     }
@@ -51,7 +53,7 @@ const OwnerMenuCard = ({ menu }) => {
   const delBtnHandler = () => {
     const result = window.confirm("삭제하시겠습니까?");
     if (result) {
-      dispatch(__delMenuByMenuIdThunk(menu.id));
+      dispatch(__delMenuByMenuIdThunk(menu.menuId));
     } else {
       return;
     }
@@ -86,7 +88,6 @@ const OwnerMenuCard = ({ menu }) => {
               <CountBtn type="submit" onClick={CompleteChangeHandler}>
                 ✅
               </CountBtn>
-              {/* <CountBtn onClick={delBtnHandler}>삭제</CountBtn> */}
             </StBtnDiv>
           </StLi>
         </>
