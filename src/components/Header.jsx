@@ -1,12 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import Button from "../elem/Button";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <>
       <StDiv>
-        <Img src={process.env.PUBLIC_URL + "/img/logo.png"}></Img>
+        <Img
+          onClick={() => navigate("/")}
+          src={process.env.PUBLIC_URL + "/img/logo.png"}
+        ></Img>
         <Img1 src={process.env.PUBLIC_URL + "/img/logo2.png"}></Img1>
         <Button>Logo out</Button>
       </StDiv>

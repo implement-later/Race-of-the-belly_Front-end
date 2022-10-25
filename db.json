@@ -1,4 +1,20 @@
 {
+  "user": [
+    {},
+    {
+      "id": "rla123dlf",
+      "password": "ruddlfz1!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "asknskf",
+      "passwordConfirm": "ruddlfz1!"
+    },
+    {
+      "id": "ruddlfdl1",
+      "password": "rla123dlf!",
+      "isRestaurant": false
+    }
+  ],
   "restaurantlist": [
     {
       "restaurantName": "노걸대",
@@ -99,12 +115,5 @@
         "menuCnt": 1
       }
     ]
-  ],
-  "user": [
-    {
-      "id": "123",
-      "password": "123",
-      "isRestaurant": false
-    }
   ]
 }
