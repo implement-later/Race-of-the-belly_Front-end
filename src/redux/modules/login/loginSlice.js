@@ -3,6 +3,7 @@ import { getUsersApi } from "../login/api";
 import { BASE_URL } from "../login/api";
 import { getCookie, setCookie } from "./cookies";
 import axios from "axios";
+import { ServerUrl } from "../../../sever";
 
 // export const __getUsers = createAsyncThunk(
 //   "getUsers",
@@ -32,7 +33,7 @@ export const __addUsers = createAsyncThunk(
   "addUsers",
   async (payload, thunkAPI) => {
     try {
-      const response = await axios.post(`${BASE_URL}/user`, payload);
+      const response = await axios.post(`${ServerUrl}/user`, payload);
       setCookie("password", `BEARER ${response.data.password}`);
       setCookie("uesername", `${response.data.id}`);
       return thunkAPI.fulfillWithValue(response.data);

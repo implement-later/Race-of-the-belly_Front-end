@@ -150,12 +150,5 @@
         }
       ]
     }
-  ],
-  "user": [
-    {
-      "id": "asdfasdf",
-      "password": "asdf1234",
-      "isRestaurant": false
-    }
   ]
 }

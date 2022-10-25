@@ -1,12 +1,11 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
-
-export const BASE_URL = "http://localhost:8080";
+import { ServerUrl } from "../../../sever/index";
 
 const cookies = new Cookies();
 export const getUsersApi = async () => {
   const accessToken = cookies.get("Authorization");
-  return await axios.get("http://localhost:8080/user", {
+  return await axios.get(`${ServerUrl}/user`, {
     headers: {
       Authorizition: accessToken,
     },
