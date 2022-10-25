@@ -13,20 +13,36 @@ import Wrapper from "../../elem/Wrapper";
 
 const OrderItemList = () => {
   const navigate = useNavigate();
-  // 레스토랑 id를 받아서 그 id값으로 restaurant가 가진 menulist를 받아온다.
   const { restaurantId } = useParams();
+  // 레스토랑 id를 받아서 그 id값으로 restaurant가 가진 menulist를 받아온다.
   const menuList = useSelector((state) => state.orderdetail.orderingList);
-  console.log(menuList);
+  const orderDetail = useSelector((state) => state.orderdetail.orderdetail);
   const dispatch = useDispatch();
-
+  const [orderMenuObj, setOrderMenuObj] = useState({
+    memberUsername: "String",
+    restaurantUsername: "String",
+    orderDetailsList: [],
+  });
   // 초기에 레스토랑 id에 따라 보여질 메뉴 dispatch해서 reducer의 orderingList 배열에 넣어준다.
   useEffect(() => {
     dispatch(__getOrderingMenuThunk(restaurantId));
   }, [dispatch, restaurantId]);
 
+  //주문하기 버튼 누를시 order가 된다.
   const postOrderBtnHandler = () => {
+    // menuCnt가 변화한 menuList의 menu중 menuCnt가 0인것을 제외한다.
     const removeCntZero = menuList.filter((menu) => menu.menuCnt !== 0);
-    dispatch(__postOrderMenuThunk(removeCntZero));
+
+    // menuCnt가 0인것을 제외하고 하나씩 orderMenuObj에 추가한다.
+    for (let i = 0; i < removeCntZero.length; i++) {
+      const dup = orderMenuObj.orderDetailsList.push(removeCntZero[i]);
+      // state를 변화해준다.
+      setOrderMenuObj(dup);
+    }
+    // 최종적으로 바뀐 Obj를 dispatch하여 post
+    dispatch(__postOrderMenuThunk(orderMenuObj));
+    // post후에 response로 받은 값에 있는 orderId를 이용하여 상세페이지로 이동시킨다.
+    navigate(`/orderdetail/${orderDetail.data.orderId}`);
   };
 
   return (

@@ -23,7 +23,6 @@ export const __getOrderingMenuThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await axios.get(`${ServerUrl}/restaurant/${payload}`);
-      console.log(data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -36,8 +35,9 @@ export const __postOrderMenuThunk = createAsyncThunk(
   "POST_ORDER_MENU",
   async (payload, thunkAPI) => {
     try {
-      await axios.post(`${ServerUrl}/order`, payload);
+      const { data } = await axios.post(`${ServerUrl}/order`, payload);
       console.log(payload);
+      return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
     }
@@ -94,8 +94,30 @@ export const orderdetailSlice = createSlice({
       }));
       state.orderingList = dupArr;
     },
+
+    // 포스트 한 후 받아올 주문데이터를 orderDetail에 넣는다.
+    [__postOrderMenuThunk.pending]: (state) => {},
+    [__postOrderMenuThunk.fulfilled]: (state, action) => {
+      state.orderdetail.data = action.payload.data;
+    },
+    [__postOrderMenuThunk.rejected]: (state, action) => {},
   },
 });
 
 export const { addMenuCnt, minusMenuCnt } = orderdetailSlice.actions;
 export default orderdetailSlice.reducer;
+
+// {
+//   "memberUsername": "String",
+//   "restaurantUsername": "String",
+//   "orderDetailsList": [
+//     {
+//       "menuName": "초밥",
+//       "count": 2
+//     },
+//     {
+//       "menuName": "김밥",
+//       "count": 1
+//     }
+//   ]
+// }
