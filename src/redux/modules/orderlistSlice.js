@@ -9,7 +9,7 @@ export const __getOrderDetailThunk = createAsyncThunk(
   "GET_ORDER_DETAIL",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(`${ServerUrl}/order?orderId=${payload}`);
+      const { data } = await axios.getorderdetail(payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);

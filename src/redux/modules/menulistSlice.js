@@ -3,6 +3,7 @@ import axios from "axios";
 import thunk from "redux-thunk";
 import { current } from "@reduxjs/toolkit";
 import { ServerUrl } from "../../sever";
+import { apis } from "./API/api";
 // import { serverUrl } from "../api";
 
 // restaurant id로 메뉴조회
@@ -10,7 +11,7 @@ export const __getMenuByIdThunk = createAsyncThunk(
   "GET_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(`${ServerUrl}/restaurant/${payload}`);
+      const { data } = await apis.getmenulist(payload);
 
       return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
@@ -25,10 +26,7 @@ export const __addMenuByIdThunk = createAsyncThunk(
   "ADD_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.post(
-        `${ServerUrl}/restaurant?restaurantId=${payload.restaurantId}`,
-        payload
-      );
+      const { data } = await axios.addmenu(payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -40,7 +38,7 @@ export const __delMenuByMenuIdThunk = createAsyncThunk(
   "DEL_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(`${ServerUrl}/menu/${payload}`, payload);
+      await axios.delmenu(payload);
       return thunkAPI.fulfillWithValue(payload);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -52,10 +50,7 @@ export const __updateMenuThunk = createAsyncThunk(
   "UPDATE_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.patch(
-        `${ServerUrl}/menu/${payload.menuId}`,
-        payload
-      );
+      const { data } = await axios.update(payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
