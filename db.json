@@ -1,4 +1,14 @@
 {
+  "user": [
+    {
+      "id": "rla123dlf",
+      "password": "ruddlfz1!",
+      "isRestaurant": false,
+      "restaurantName": "",
+      "nickName": "kki147",
+      "passwordConfirm": "ruddlfz1!"
+    }
+  ],
   "restaurantlist": [
     {
       "restaurantName": "노걸대",
@@ -163,13 +173,6 @@
         }
       ],
       "id": 2
-    }
-  ],
-  "user": [
-    {
-      "id": "asdfasdf",
-      "password": "asdf1234",
-      "isRestaurant": false
     }
   ]
 }

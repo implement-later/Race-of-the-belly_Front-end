@@ -6,6 +6,7 @@ export const __getList = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await getListApi();
+
       return thunkAPI.fulfillWithValue(data);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);

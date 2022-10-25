@@ -1,5 +1,6 @@
 import axios from "axios";
+import { ServerUrl } from "../../../sever";
 
 export const getListApi = async () => {
-  return await axios.get("http://localhost:8080/restaurantlist");
+  return await axios.get(`${ServerUrl}/restaurantlist/`);
 };

@@ -1,9 +1,9 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Wrapper from "../../elem/Wrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __addUsers } from "../../redux/modules/login/loginSlice";
+import styled from "styled-components";
 
 function UsersignUp() {
   //이름 , 비밀번호, 비밀번호 확인, 오너, 식당이름, 닉네임
@@ -29,23 +29,47 @@ function UsersignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // const postSignup = async () => {
+  //   try {
+  //     // await axios.post(`${API_URL}/member/signup`
+  //     await axios.post("http://localhost:8080/user", {
+  //       id: username,
+  //       password: password,
+  //       isRestaurant: isRestaurant,
+  //       restaurantName: restaurantName,
+  //       nickName: nickName,
+  //       passwordConfirm: passwordConfirm,
+  //     });
+  //     alert("회원가입이 완료되었습니다. 로그인을 해주세요.");
+  //   } catch (error) {
+  //     alert("회원가입이 실패하였습니다");
+
+  //     return;
+  //   }
+  // };
+
+  const postSignup = {
+    id: username,
+    password: password,
+    isRestaurant: isRestaurant,
+    restaurantName: restaurantName,
+    nickName: nickName,
+    passwordConfirm: passwordConfirm,
+  };
+
   const onSubmitHandle = (e) => {
     e.preventDefault();
-
-    const input = {
-      id: username,
-      password: password,
-      isRestaurant,
-      restaurantName,
-      nickName,
-    };
-
+    dispatch(__addUsers(postSignup));
+    console.log(postSignup);
     setUsername("");
     setPassword("");
     setRestaurantName("");
     setPasswordConfirm("");
 
-    dispatch(__addUsers(input));
+    // dispatch(__addUsers(postSignup));
+    // localStorage.setItem("id", username);
+    // localStorage.setItem("password", password);
+
     navigate("/");
   };
 
@@ -88,131 +112,232 @@ function UsersignUp() {
     }
   };
   return (
-    <Wrapper
-      mg="20px auto"
-      pd="30px"
-      wd="50%"
-      hg="80%"
-      inline="background: #e1eef6;"
-    >
-      <h1>SignUp</h1>
-      <form onSubmit={(e) => onSubmitHandle(e)}>
-        <label>Username : </label>
-        <input
-          type="text"
-          name="username"
-          placeholder="username"
-          onChange={(e) => {
-            setUsername(e.target.value);
-            usernameCheck(e.target.value);
-          }}
-          value={username || ""}
-          required
-        />
-        {username.length > 0 && (
-          <span className={`message ${isName ? "success" : "error"}`}>
-            {usernameMessage}
+    <Divbox>
+      <Wrapper
+        mg="40px auto"
+        pd="30px"
+        wd="400px"
+        hg="650px"
+        inline="background: #e1eef6; border:none; border-radius: 24px;"
+      >
+        <h1>SignUp</h1>
+        <form onSubmit={(e) => onSubmitHandle(e)}>
+          <InputBox>
+            <input
+              type="text"
+              name="username"
+              placeholder=" "
+              onChange={(e) => {
+                setUsername(e.target.value);
+                usernameCheck(e.target.value);
+              }}
+              value={username || ""}
+              required
+            />
+            <label htmlFor="username">아이디</label>
+          </InputBox>
+          {username.length > 0 && (
+            <span className={`message ${isName ? "success" : "error"}`}>
+              {usernameMessage}
+            </span>
+          )}
+          <br />
+          <span>
+            닉네임은 최소 4자 이상, 12자 이하 알파벳 대소문자, 숫자로
+            구성됩니다.
           </span>
-        )}
-        <br />
-        <span>
-          닉네임은 최소 4자 이상, 12자 이하 알파벳 대소문자, 숫자로 구성됩니다.
-        </span>
-        <br />
-        <label>Nick Name : </label>
-        <input
-          type="text"
-          name="nickName"
-          placeholder="nickName"
-          onChange={(e) => {
-            setNickName(e.target.value);
-          }}
-          value={nickName || ""}
-          required
-        />
-        <br />
-        <label htmlFor="password">Password : </label>
-        <input
-          type="text"
-          name="password"
-          placeholder="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-            passwordCheck(e.target.value);
-          }}
-          value={password || ""}
-          required
-        />
-        {password.length > 0 && (
-          <span className={`message ${isPassword ? "success" : "error"}`}>
-            {passwordMessage}
+          <br />
+          <InputBox>
+            <input
+              type="text"
+              name="nickName"
+              placeholder=" "
+              onChange={(e) => {
+                setNickName(e.target.value);
+              }}
+              value={nickName || ""}
+              required
+            />
+
+            <label htmlFor="password">닉네임</label>
+          </InputBox>
+          <br />
+          <InputBox>
+            <input
+              type="password"
+              name="password"
+              placeholder=" "
+              onChange={(e) => {
+                setPassword(e.target.value);
+                passwordCheck(e.target.value);
+              }}
+              value={password || ""}
+              required
+            />
+            <label htmlFor="password">비밀번호</label>
+          </InputBox>
+          {password.length > 0 && (
+            <span className={`message ${isPassword ? "success" : "error"}`}>
+              {passwordMessage}
+            </span>
+          )}
+          <br />
+          <span>
+            비밀번호는 최소 8자 이상, 20자 이하 알파벳 대소문자, 숫자,
+            특수문자로 구성됩니다.
           </span>
-        )}
-        <br />
-        <span>
-          비밀번호는 최소 8자 이상, 20자 이하 알파벳 대소문자, 숫자, 특수문자로
-          구성됩니다.
-        </span>
-        <br />
-        <label htmlFor="password">Password Confirm : </label>
-        <input
-          type="text"
-          name="passwordConfirm"
-          placeholder="passwordConfirm"
-          onChange={(e) => {
-            setPasswordConfirm(e.target.value);
-            passwordDoubleCheck(password, e.target.value);
-          }}
-          value={passwordConfirm || ""}
-          required
-        />
-        {passwordConfirm.length > 0 && (
-          <span
-            className={`message ${isPasswordConfirm ? "success" : "error"}`}
-          >
-            {passwordConfirmMessage}
-          </span>
-        )}
-        <br />
-        <input
-          type="checkbox"
-          name="isRestaurant"
-          defaultChecked={false}
-          onChange={(e) => {
-            setIsRestaurant(e.target.checked);
-          }}
-        />
-        Owner check
-        <p />
-        {isRestaurant === true ? (
-          <Modal
-            restaurantName={restaurantName}
-            setRestaurantName={setRestaurantName}
-          />
-        ) : null}
-        <br />
-        <button type="submit">Sign up</button>
-      </form>
-    </Wrapper>
+          <br />
+          <InputBox>
+            <input
+              type="password"
+              name="passwordConfirm"
+              placeholder=" "
+              onChange={(e) => {
+                setPasswordConfirm(e.target.value);
+                passwordDoubleCheck(password, e.target.value);
+              }}
+              value={passwordConfirm || ""}
+              required
+            />
+
+            <label htmlFor="password">비밀번호 확인</label>
+            <br />
+          </InputBox>
+          {passwordConfirm.length > 0 && (
+            <span
+              className={`message ${isPasswordConfirm ? "success" : "error"}`}
+            >
+              {passwordConfirmMessage}
+            </span>
+          )}
+          <br />
+          <StyledLabel htmlFor="Owner">
+            <StyledInput
+              type="checkbox"
+              name="isRestaurant"
+              defaultChecked={false}
+              onChange={(e) => {
+                setIsRestaurant(e.target.checked);
+              }}
+            />
+            <StyledP>Owner</StyledP>
+            <p />
+          </StyledLabel>
+          {isRestaurant === true ? (
+            <Modal
+              restaurantName={restaurantName}
+              setRestaurantName={setRestaurantName}
+            />
+          ) : null}
+          <br />
+          <Button type="submit">Sign up</Button>
+        </form>
+      </Wrapper>
+    </Divbox>
   );
 }
 
 function Modal(props) {
   return (
     <>
-      <label>Restaurant Name : </label>
-      <input
-        type="text"
-        name="restaurantName"
-        placeholder="restaurantName"
-        onChange={(e) => {
-          props.setRestaurantName(e.target.value);
-        }}
-        value={props.restaurantName || ""}
-        required
-      />
+      <InputBox>
+        <input
+          type="text"
+          name="restaurantName"
+          placeholder=" "
+          onChange={(e) => {
+            props.setRestaurantName(e.target.value);
+          }}
+          value={props.restaurantName || ""}
+          required
+        />
+        <label htmlFor="password">가게이름</label>
+      </InputBox>
     </>
   );
 }
 
 export default UsersignUp;
+
+const InputBox = styled.div`
+  position: relative;
+  margin: 10px 0;
+  & input {
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #ccc;
+    padding: 20px 0px 5px 0px;
+    font-size: 14pt;
+    width: 100%;
+  }
+  & input ::placeholder {
+    color: transparent;
+  }
+  & input:placeholder-shown + label {
+    color: #aaa;
+    font-size: 14pt;
+    top: 15px;
+  }
+  & input:focus + label,
+  label {
+    color: #8aa1a1;
+    font-size: 10pt;
+    pointer-events: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+  }
+  &input:focus,
+  input:not(:placeholder-shown) {
+    border-bottom: solid 1px #8aa1a1;
+    outline: none;
+  }
+`;
+
+const StyledInput = styled.input`
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid gainsboro;
+  border-radius: 0.35rem;
+  &:checked {
+    border-color: transparent;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+    background-size: 100% 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: limegreen;
+  }
+`;
+
+const StyledLabel = styled.label`
+  display: flex;
+  align-items: center;
+  user-select: none;
+`;
+
+const StyledP = styled.p`
+  margin-left: 0.25rem;
+`;
+
+const Button = styled.button`
+  background: white;
+  border-radius: 20px;
+  height: 50px;
+  width: 300px;
+  border: 1px solid #fcbe32;
+  margin: 30px 20px;
+  :hover {
+    color: white;
+    background: #fcbe32;
+  }
+`;
+
+const Divbox = styled.div`
+  display: grid;
+  place-items: center;
+`;
