@@ -26,7 +26,9 @@ export const __addMenuByIdThunk = createAsyncThunk(
   "ADD_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.addmenu(payload);
+      console.log(payload);
+      const { data } = await apis.addmenu(payload);
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -38,7 +40,7 @@ export const __delMenuByMenuIdThunk = createAsyncThunk(
   "DEL_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      await axios.delmenu(payload);
+      await apis.delmenu(payload);
       return thunkAPI.fulfillWithValue(payload);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -50,7 +52,7 @@ export const __updateMenuThunk = createAsyncThunk(
   "UPDATE_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.update(payload);
+      const { data } = await apis.update(payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
