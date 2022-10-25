@@ -1,16 +1,15 @@
-import axios from "axios";
-import Cookies from "universal-cookie";
-import { ServerUrl } from "../../../sever/index";
+// import axios from "axios";
+// import { ServerUrl } from "../../../sever/index";
 
-const cookies = new Cookies();
-export const getUsersApi = async () => {
-  const accessToken = cookies.get("Authorization");
-  return await axios.get(`${ServerUrl}/`, {
-    headers: {
-      Authorizition: accessToken,
-    },
-  });
-};
+// const cookies = new Cookies();
+// export const getUsersApi = async () => {
+//   const accessToken = cookies.get("Authorization");
+//   return await axios.get(`${ServerUrl}/`, {
+//     headers: {
+//       Authorizition: accessToken,
+//     },
+//   });
+// };
 
 // 백업
 // export const addUsersApi = async (payload) => {
