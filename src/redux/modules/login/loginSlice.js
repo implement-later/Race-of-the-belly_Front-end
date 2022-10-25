@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getUsersApi } from "../login/api";
-import { BASE_URL } from "../login/api";
 import { getCookie, setCookie } from "./cookies";
 import axios from "axios";
 import { ServerUrl } from "../../../sever";
@@ -22,7 +21,7 @@ export const __getUsers = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await getUsersApi();
-      return thunkAPI.fulfillWithValue(data.data);
+      return thunkAPI.fulfillWithValue(data);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }
@@ -34,6 +33,7 @@ export const __addUsers = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await axios.post(`${ServerUrl}/user`, payload);
+      console.log(payload);
       setCookie("password", `BEARER ${response.data.password}`);
       setCookie("uesername", `${response.data.id}`);
       return thunkAPI.fulfillWithValue(response.data);
@@ -44,7 +44,7 @@ export const __addUsers = createAsyncThunk(
 );
 
 const initialState = {
-  username: "",
+  id: "",
   isLogin: false,
   isLoading: false,
   error: "",

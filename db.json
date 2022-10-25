@@ -1,18 +1,12 @@
 {
   "user": [
-    {},
     {
       "id": "rla123dlf",
       "password": "ruddlfz1!",
       "isRestaurant": false,
       "restaurantName": "",
-      "nickName": "asknskf",
+      "nickName": "kki147",
       "passwordConfirm": "ruddlfz1!"
-    },
-    {
-      "id": "ruddlfdl1",
-      "password": "rla123dlf!",
-      "isRestaurant": false
     }
   ],
   "restaurantlist": [

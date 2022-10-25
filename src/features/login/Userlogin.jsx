@@ -95,7 +95,7 @@ function Userlogin() {
             <Button type="submit">Login</Button>
             <Button1
               onClick={() => {
-                navigate("signup");
+                navigate("/member/signup");
               }}
               type="button"
             >

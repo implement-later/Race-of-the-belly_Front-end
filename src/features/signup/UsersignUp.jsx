@@ -60,6 +60,7 @@ function UsersignUp() {
   const onSubmitHandle = (e) => {
     e.preventDefault();
     dispatch(__addUsers(postSignup));
+    console.log(postSignup);
     setUsername("");
     setPassword("");
     setRestaurantName("");

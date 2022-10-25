@@ -5,7 +5,7 @@ import { ServerUrl } from "../../../sever/index";
 const cookies = new Cookies();
 export const getUsersApi = async () => {
   const accessToken = cookies.get("Authorization");
-  return await axios.get(`${ServerUrl}/user`, {
+  return await axios.get(`${ServerUrl}/`, {
     headers: {
       Authorizition: accessToken,
     },

@@ -5,15 +5,26 @@ import { __getList } from "../redux/modules/restaurantlistSlice/restaurantSlice"
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const MainCard = ({ ...menu }) => {
-  const navigate = useNavigate();
+const MainCard = () => {
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.restaurantlist.restaurantlist);
+  const { restaurantName } = useParams;
+  const restaurantlist = useSelector(
+    (state) => state.restaurantlist.restaurantlist
+  );
+  console.log(restaurantlist);
 
-  const initialState = { ...menu };
-  const [menuObj, setMenuObj] = useState(initialState);
-  const { restaurantName, thumbnail } = menuObj;
+  useEffect(() => {
+    dispatch(__getList(restaurantName));
+  }, [dispatch, restaurantName]);
+
+  const navigate = useNavigate();
   // const dispatch = useDispatch();
+  // const list = useSelector((state) => state.restaurantlist.restaurantlist);
+
+  // const initialState = { ...menu };
+  // const [menuObj, setMenuObj] = useState(initialState);
+  // const { restaurantName, thumbnail } = menuObj;
+  // // const dispatch = useDispatch();
   // console.log(list);
 
   // const [list, setList] = useState(null);
@@ -41,7 +52,7 @@ const MainCard = ({ ...menu }) => {
         }}
       >
         <Stdiv>
-          <Img>123{list.restaurantName}</Img>
+          <Img>123{restaurantName}</Img>
           <StDiv1>asd</StDiv1>
         </Stdiv>
       </StDiv>
