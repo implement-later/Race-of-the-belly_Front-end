@@ -99,11 +99,6 @@
   ],
   "menu": [
     {
-      "id": 1,
-      "menuName": "초로밥",
-      "price": "120"
-    },
-    {
       "id": 2,
       "menuName": "누가바",
       "price": 30000

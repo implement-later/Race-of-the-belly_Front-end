@@ -3,33 +3,33 @@ import { JasonUrl, ServerUrl } from "../../../sever";
 
 const api = axios.create({
   baseURL: JasonUrl,
-  headers: {
-    "content-type": "application/json",
-    accept: "*/*",
-  },
+  //   headers: {
+  //     "content-type": "application/json",
+  //     accept: "*/*",
+  //   },
 });
 
-api.interceptors.request.use(function (config) {
-  const accessToken = document.cookie.split("=")[1];
-  config.headers.common["Authrozation"] = `${accessToken}`;
-  return config;
-});
+// api.interceptors.request.use(function (config) {
+//   const accessToken = document.cookie.split("=")[1];
+//   config.headers.common["Authrozation"] = `${accessToken}`;
+//   return config;
+// });
 
 export const apis = {
   // menulistSlice
-  getmenulist: (id) => api.get(`${ServerUrl}/restaurant/${id}`),
+  getmenulist: (payload) => api.get(`/restaurant/${payload}`),
 
-  addmenu: (payload) => api.post(`http:/localhost:8080/menu`, payload),
+  addmenu: (payload) => api.post(`/menu`, payload),
 
-  delmenu: (payload) => api.delete(`${ServerUrl}/menu/${payload}`),
-  update: (payload) =>
-    api.patch(`${ServerUrl}/menu/${payload.menuId}`, payload),
+  delmenu: (payload) => api.delete(`/menu/${payload}`),
+
+  update: (payload) => api.patch(`/menu/${payload.menuId}`, payload),
 
   //menuSlice
-  getmenu: (payload) => api.get(`${ServerUrl}/restaurant/${payload}`),
+  getmenu: (payload) => api.get(`/restaurant/${payload}`),
 
   //orderlistSlice
-  getorderdetail: (payload) => api.get(`${ServerUrl}/order?orderId=${payload}`),
-  getorderingmenu: (payload) => api.get(`${ServerUrl}/restaurant/${payload}`),
-  postorder: (payload) => api.post(`${ServerUrl}/order`, payload),
+  getorderdetail: (payload) => api.get(`$/order?orderId=${payload}`),
+  getorderingmenu: (payload) => api.get(`$/restaurant/${payload}`),
+  postorder: (payload) => api.post(`/order`, payload),
 };

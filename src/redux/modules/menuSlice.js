@@ -7,8 +7,8 @@ export const __getMenuThunk = createAsyncThunk(
   "GET_MENU",
   async (payload, thunkAPI) => {
     try {
+      console.log(payload);
       const { data } = await apis.getmenu(payload);
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);

@@ -26,15 +26,15 @@ const AddMenuForm = () => {
     setMenuObj({ ...menuObj, [name]: value });
   };
 
-  const onImgChange = (e) => {
-    if (e.target.files) {
-      const uploadFile = e.target.files[0];
-      const formData = new FormData();
-      formData.append("files", uploadFile);
-      setMenuObj({ ...menuObj, img: formData });
-      setPreview(URL.createObjectURL(uploadFile));
-    }
-  };
+  // const onImgChange = (e) => {
+  //   if (e.target.files) {
+  //     const uploadFile = e.target.files[0];
+  //     const formData = new FormData();
+  //     formData.append("files", uploadFile);
+  //     setMenuObj({ ...menuObj, img: formData });
+  //     setPreview(URL.createObjectURL(uploadFile));
+  //   }
+  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -46,12 +46,12 @@ const AddMenuForm = () => {
     <StContainerDiv>
       <StDiv>
         <img src="" />
-        <Input
+        {/* <Input
           type="file"
           name="file"
           accept="image/*"
           // onChange={onImgChange}
-        ></Input>
+        ></Input> */}
       </StDiv>
       <Stform onSubmit={onSubmitHandler}>
         <StInput

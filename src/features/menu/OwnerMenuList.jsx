@@ -10,6 +10,7 @@ const OwnerMenuList = () => {
   const { restaurantId } = useParams();
   const menuList = useSelector((state) => state.menulist.menulistByResId.data);
 
+  console.log(menuList);
   const dispatch = useDispatch();
 
   useEffect(() => {
