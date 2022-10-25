@@ -2,15 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import thunk from "redux-thunk";
 import { current } from "@reduxjs/toolkit";
+import { ServerUrl } from "../../sever";
 // import { serverUrl } from "../api";
 
 export const __getOrderDetailThunk = createAsyncThunk(
   "GET_ORDER_DETAIL",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/order?orderId=${payload}`
-      );
+      const { data } = await axios.get(`${ServerUrl}/order?orderId=${payload}`);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -23,10 +22,9 @@ export const __getOrderingMenuThunk = createAsyncThunk(
   "GET_ORDERING_MENU",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/restaurant?restaurantId=${payload}`
-      );
-      return thunkAPI.fulfillWithValue(data);
+      const { data } = await axios.get(`${ServerUrl}/restaurant/${payload}`);
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
     }
@@ -38,7 +36,7 @@ export const __postOrderMenuThunk = createAsyncThunk(
   "POST_ORDER_MENU",
   async (payload, thunkAPI) => {
     try {
-      await axios.post(`http://localhost:8080/order`, payload);
+      await axios.post(`${ServerUrl}/order`, payload);
       console.log(payload);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -56,7 +54,7 @@ export const orderdetailSlice = createSlice({
   reducers: {
     addMenuCnt: (state, action) => {
       state.orderingList.map((obj) => {
-        if (obj.id === action.payload) {
+        if (obj.menuId === action.payload) {
           return (obj.menuCnt += 1);
         } else {
           return { ...obj };
@@ -65,7 +63,7 @@ export const orderdetailSlice = createSlice({
     },
     minusMenuCnt: (state, action) => {
       state.orderingList.map((obj) => {
-        if (obj.id === action.payload) {
+        if (obj.menuId === action.payload) {
           return (obj.menuCnt -= 1);
         } else {
           return { ...obj };

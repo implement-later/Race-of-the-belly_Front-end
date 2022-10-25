@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import thunk from "redux-thunk";
 import { current } from "@reduxjs/toolkit";
+import { ServerUrl } from "../../sever";
 // import { serverUrl } from "../api";
 
 // restaurant id로 메뉴조회
@@ -9,10 +10,9 @@ export const __getMenuByIdThunk = createAsyncThunk(
   "GET_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/restaurant?restaurantId=${payload}`
-      );
-      return thunkAPI.fulfillWithValue(data);
+      const { data } = await axios.get(`${ServerUrl}/restaurant/${payload}`);
+
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
     }
@@ -26,7 +26,7 @@ export const __addMenuByIdThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await axios.post(
-        `http://localhost:8080/restaurant?restaurantId=${payload.restaurantId}`,
+        `${ServerUrl}/restaurant?restaurantId=${payload.restaurantId}`,
         payload
       );
       return thunkAPI.fulfillWithValue(data);
@@ -40,10 +40,7 @@ export const __delMenuByMenuIdThunk = createAsyncThunk(
   "DEL_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(
-        `http://localhost:8080/restaurant/${payload}`,
-        payload
-      );
+      await axios.delete(`${ServerUrl}/menu/${payload}`, payload);
       return thunkAPI.fulfillWithValue(payload);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -55,12 +52,11 @@ export const __updateMenuThunk = createAsyncThunk(
   "UPDATE_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      await axios.patch(
-        `http://localhost:8080/restaurant/${payload.id}`,
+      const { data } = await axios.patch(
+        `${ServerUrl}/menu/${payload.menuId}`,
         payload
       );
-      console.log(payload);
-      return thunkAPI.fulfillWithValue(payload);
+      return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
     }

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import Example from "../pages/Example";
 import Login from "../pages/Login";
 import Main from "../pages/Main";
 import OrderDetail from "../pages/OrderDetail";
@@ -15,9 +16,9 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         {/* 회원가입, 로그인 */}
-        <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<Example />} /> */}
         {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/" element={<Login />} /> */}
+        <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         {/* user 접근가능 */}
         <Route path="/restaurant-list" element={<Main />} />
@@ -25,7 +26,7 @@ const Router = () => {
 
         {/* owner 접근가능 */}
         <Route path="/owner/:restaurantId" element={<OwnerMenu />} />
-        <Route path="/owner/menu/:id" element={<OwnerAddMenu />} />
+        <Route path="/owner/menu/:restaurantId" element={<OwnerAddMenu />} />
         <Route path="/owner/orders" element={<OwnerOrders />} />
         {/* 내부분 */}
         {/* 둘 다 접근 가능 */}
