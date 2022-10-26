@@ -33,7 +33,8 @@ const OwnerMenuCard = ({ menu }) => {
   };
 
   // 완료하기 버튼 누를시
-  const CompleteChangeHandler = () => {
+  const CompleteChangeHandler = (e) => {
+    e.preventDefault();
     if (menuName.trim() === "") {
       return alert("입력된 내용이 없습니다.");
     }

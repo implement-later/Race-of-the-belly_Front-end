@@ -13,11 +13,13 @@ import Wrapper from "../../elem/Wrapper";
 
 const OrderItemList = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { restaurantId } = useParams();
   // 레스토랑 id를 받아서 그 id값으로 restaurant가 가진 menulist를 받아온다.
   const menuList = useSelector((state) => state.orderdetail.orderingList);
   const orderDetail = useSelector((state) => state.orderdetail.orderdetail);
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  console.log(user);
   const [orderMenuObj, setOrderMenuObj] = useState({
     memberUsername: "jelly2",
     restaurantUsername: "storeJelly1",

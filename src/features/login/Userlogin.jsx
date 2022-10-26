@@ -13,7 +13,6 @@ function Userlogin() {
   const [isRestaurant, setIsRestaurant] = useState(false);
 
   const { user } = useSelector((state) => state);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +34,6 @@ function Userlogin() {
     // boolean 값에 따라 이동
     console.log(isRestaurant);
     if (isRestaurant === false) {
-      console.log(123);
       navigate("/restaurant-list");
     } else {
       navigate(`/owner/${user.user.data.id}`);
