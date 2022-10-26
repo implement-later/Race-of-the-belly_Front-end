@@ -6,18 +6,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const MainCard = () => {
-  const dispatch = useDispatch();
-  const { restaurantName } = useParams;
-  const restaurantlist = useSelector(
-    (state) => state.restaurantlist.restaurantlist
-  );
-  console.log(restaurantlist);
-
-  useEffect(() => {
-    dispatch(__getList(restaurantName));
-  }, [dispatch, restaurantName]);
-
   const navigate = useNavigate();
+
+  // const dispatch = useDispatch();
+  // const list = useSelector((state) => state.restaurantlist.restaurantlist);
+  // console.log(list);
+
+  // const menu = list.find((restaurantlist) => restaurantlist.id === Number(id));
+
+  // const { restaurantName } = useParams;
+  // useEffect(() => {
+  //   dispatch(__getList(restaurantName));
+  // }, [dispatch, restaurantName]);
+  // console.log(restaurantName);
+  // const restaurantlist = useSelector(
+  //   (state) => state.restaurantlist.restaurantlist
+  // );
+
   // const dispatch = useDispatch();
   // const list = useSelector((state) => state.restaurantlist.restaurantlist);
 
@@ -42,7 +47,7 @@ const MainCard = () => {
   return (
     <>
       <StDiv
-        mg="20px auto"
+        mg="20px 0px 0px 30px"
         pd="30px"
         wd="300px"
         hg="200px"
@@ -52,7 +57,7 @@ const MainCard = () => {
         }}
       >
         <Stdiv>
-          <Img>123{restaurantName}</Img>
+          <Img>123</Img>
           <StDiv1>asd</StDiv1>
         </Stdiv>
       </StDiv>
@@ -63,8 +68,6 @@ const MainCard = () => {
 export default MainCard;
 const Stdiv = styled.div`
   font-size: 30px;
-  border: none;
-  border-radius: 24px;
 `;
 
 const Img = styled.div`
@@ -77,6 +80,8 @@ const StDiv = styled(Wrapper)`
   border-radius: 24px;
   background: #eaeef6;
   width: 300px;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const StDiv1 = styled.div``;

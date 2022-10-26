@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import Wrapper from "../../elem/Wrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 import { __addUsers } from "./../../redux/modules/login/loginSlice";
+import Wrapper from "../../elem/Wrapper";
+import styled from "styled-components";
 
 function Userlogin() {
+  // id, apssword, boolean
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isRestaurant, setIsRestaurant] = useState(false);
@@ -15,6 +16,7 @@ function Userlogin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // request
   const postLogin = {
     id: username,
     password: password,
@@ -26,14 +28,15 @@ function Userlogin() {
 
     if (username === "") return alert("아이디를 입력하세요");
     if (password === "") return alert("패스워드를 입력하세요");
+
     dispatch(__addUsers(postLogin));
+
+    // boolean 값에 따라 이동
     if (isRestaurant === false) {
       navigate("/restaurant-list");
     } else {
       navigate("/owner/orders");
     }
-    // localStorage.setItem("id", username);
-    // localStorage.setItem("password", password);
 
     setUsername("");
     setPassword("");
@@ -47,8 +50,7 @@ function Userlogin() {
           pd="30px"
           wd="400px"
           hg="480px"
-          inline="background: #e1eef6; border:none; border-radius: 24px;
-       "
+          inline="background: #e1eef6; border:none; border-radius: 24px;"
         >
           <h1>Login</h1>
           <br />

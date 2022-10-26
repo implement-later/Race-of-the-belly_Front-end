@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import Wrapper from "../../elem/Wrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __addUsers } from "../../redux/modules/login/loginSlice";
 import styled from "styled-components";
+import Wrapper from "../../elem/Wrapper";
 
 function UsersignUp() {
   //이름 , 비밀번호, 비밀번호 확인, 오너, 식당이름, 닉네임
@@ -29,48 +29,36 @@ function UsersignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const postSignup = async () => {
-  //   try {
-  //     // await axios.post(`${API_URL}/member/signup`
-  //     await axios.post("http://localhost:8080/user", {
-  //       id: username,
-  //       password: password,
-  //       isRestaurant: isRestaurant,
-  //       restaurantName: restaurantName,
-  //       nickName: nickName,
-  //       passwordConfirm: passwordConfirm,
-  //     });
-  //     alert("회원가입이 완료되었습니다. 로그인을 해주세요.");
-  //   } catch (error) {
-  //     alert("회원가입이 실패하였습니다");
-
-  //     return;
-  //   }
-  // };
-
+  // request
   const postSignup = {
     id: username,
     password: password,
     isRestaurant: isRestaurant,
     restaurantName: restaurantName,
     nickName: nickName,
-    passwordConfirm: passwordConfirm,
   };
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
-    dispatch(__addUsers(postSignup));
-    console.log(postSignup);
+
+    if (
+      passwordConfirmMessage &&
+      usernameMessage &&
+      isPasswordConfirm === true
+    ) {
+      dispatch(__addUsers(postSignup));
+      alert("회원가입에 성공하셨습니다.");
+      navigate("/");
+    } else {
+      alert("회원가입에 실패하셨습니다.");
+    }
+
+    //value reset
     setUsername("");
     setPassword("");
     setRestaurantName("");
     setPasswordConfirm("");
-
-    // dispatch(__addUsers(postSignup));
-    // localStorage.setItem("id", username);
-    // localStorage.setItem("password", password);
-
-    navigate("/");
+    setNickName("");
   };
 
   // username: 닉네임은 최소 4자 이상, 12자 이하 알파벳 대소문자(a-z, A-Z), 숫자(0-9)로 구성됩니다. ^[a-zA-Z0-9]{4,12}$
@@ -82,11 +70,11 @@ function UsersignUp() {
   const usernameCheck = (username) => {
     if (username.match(usernameRegEx) === null) {
       setIsName(false);
-      setUsernameMessage("아이디 형식을 확인해주세요");
+      setUsernameMessage("아이디를 확인해주세요");
       return;
     } else {
       setIsName(true);
-      setUsernameMessage("아이디 형식이 맞아요");
+      setUsernameMessage("아이디가 맞습니다");
     }
   };
 
@@ -94,11 +82,11 @@ function UsersignUp() {
   const passwordCheck = (password) => {
     if (password.match(passwordRegEx) === null) {
       setIsPassword(false);
-      setPasswordMessage("비밀번호 형식을 확인해주세요");
+      setPasswordMessage("비밀번호를 확인해주세요");
       return;
     } else {
       setIsPassword(true);
-      setPasswordMessage("비밀번호 형식이 맞아요");
+      setPasswordMessage("비밀번호가 맞습니다");
     }
   };
   const passwordDoubleCheck = (password, passwordConfirm) => {
@@ -108,7 +96,7 @@ function UsersignUp() {
       return;
     } else {
       setIsPasswordConfirm(true);
-      setPasswordConfirmMessage("비밀번호가 동일합니다");
+      setPasswordConfirmMessage("비밀번호가 맞습니다");
     }
   };
   return (
@@ -143,7 +131,7 @@ function UsersignUp() {
           )}
           <br />
           <span>
-            닉네임은 최소 4자 이상, 12자 이하 알파벳 대소문자, 숫자로
+            아이디는 최소 4자 이상, 12자 이하 알파벳 대소문자, 숫자로
             구성됩니다.
           </span>
           <br />
@@ -158,7 +146,6 @@ function UsersignUp() {
               value={nickName || ""}
               required
             />
-
             <label htmlFor="password">닉네임</label>
           </InputBox>
           <br />
@@ -199,7 +186,6 @@ function UsersignUp() {
               value={passwordConfirm || ""}
               required
             />
-
             <label htmlFor="password">비밀번호 확인</label>
             <br />
           </InputBox>
@@ -237,6 +223,7 @@ function UsersignUp() {
   );
 }
 
+// resturant Name modal
 function Modal(props) {
   return (
     <>

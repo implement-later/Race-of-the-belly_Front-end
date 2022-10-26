@@ -3,6 +3,7 @@ import { getUsersApi } from "../login/api";
 import { getCookie, setCookie } from "./cookies";
 import axios from "axios";
 import { ServerUrl } from "../../../sever";
+import { apis } from "../login/api";
 
 // export const __getUsers = createAsyncThunk(
 //   "getUsers",
@@ -28,14 +29,18 @@ export const __getUsers = createAsyncThunk(
   }
 );
 
+// export const __postSignup
+
 export const __addUsers = createAsyncThunk(
   "addUsers",
   async (payload, thunkAPI) => {
     try {
       const response = await axios.post(`${ServerUrl}/user`, payload);
-      console.log(payload);
-      setCookie("password", `BEARER ${response.data.password}`);
-      setCookie("uesername", `${response.data.id}`);
+      // console.log(payload);
+      // console.log(response);
+      // setCookie("password", `BEARER ${response.data.password}`);
+      // setCookie("uesername", `${response.data.id}`);
+
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
