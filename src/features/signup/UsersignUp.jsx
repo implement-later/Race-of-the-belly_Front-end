@@ -36,7 +36,6 @@ function UsersignUp() {
     name: name || restaurantName,
     password: password,
     isRestaurant: isRestaurant,
-    // restaurantName: restaurantName,
   };
 
   const onSubmitHandle = (e) => {
