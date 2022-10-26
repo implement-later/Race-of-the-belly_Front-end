@@ -9,7 +9,6 @@ import OwnerMenu from "../pages/OwnerMenu";
 import OwnerOrders from "../pages/OwnerOrders";
 import SignUp from "../pages/SignUp";
 import UserOrder from "../pages/UserOrder";
-import UserOrderDetail from "../pages/UserOrderDetail";
 
 const Router = () => {
   return (
