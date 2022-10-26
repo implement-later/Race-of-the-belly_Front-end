@@ -31,11 +31,14 @@ function Userlogin() {
     if (password === "") return alert("패스워드를 입력하세요");
     console.log(postLogin);
     dispatch(__postLogin(postLogin));
-
+    // console.log(isRestaurant);
     // boolean 값에 따라 이동
+    console.log(isRestaurant === false);
     if (isRestaurant === false) {
+      console.log(123);
       navigate("/restaurant-list");
     } else {
+      console.log(999);
       navigate(`/owner/${user.userename}`);
     }
 

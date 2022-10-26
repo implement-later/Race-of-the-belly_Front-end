@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import Button from "../elem/Button";
+import { setCookie, deleteCookie } from "../shared/Cookie";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,7 +14,15 @@ const Header = () => {
           src={process.env.PUBLIC_URL + "/img/logo.png"}
         ></Img>
         <Img1 src={process.env.PUBLIC_URL + "/img/logo2.png"}></Img1>
-        <Button>Logo out</Button>
+        <Button
+          onClick={(e) => {
+            deleteCookie("Authorization");
+            navigate("/");
+            alert("로그아웃 되셨습니다.");
+          }}
+        >
+          Logo out
+        </Button>
       </StDiv>
     </>
   );
