@@ -31,11 +31,12 @@ function UsersignUp() {
 
   // request
   const postSignup = {
-    id: username,
+    // id: username,
+    username: username,
+    name: nickName,
     password: password,
     isRestaurant: isRestaurant,
-    restaurantName: restaurantName,
-    nickName: nickName,
+    // restaurantName: restaurantName,
   };
 
   const onSubmitHandle = (e) => {
@@ -46,6 +47,7 @@ function UsersignUp() {
       usernameMessage &&
       isPasswordConfirm === true
     ) {
+      console.log(postSignup);
       dispatch(__postSignup(postSignup));
       alert("회원가입에 성공하셨습니다.");
       navigate("/");

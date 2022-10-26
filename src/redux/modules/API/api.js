@@ -2,18 +2,18 @@ import axios from "axios";
 import { JasonUrl, ServerUrl } from "../../../sever";
 
 const api = axios.create({
-  baseURL: JasonUrl,
-  //   headers: {
-  //     "content-type": "application/json",
-  //     accept: "*/*",
-  //   },
+  baseURL: ServerUrl,
+  headers: {
+    "Content-Type": "application/json",
+    accept: "*/*",
+  },
 });
 
-// api.interceptors.request.use(function (config) {
-//   const accessToken = document.cookie.split("=")[1];
-//   config.headers.common["Authrozation"] = `${accessToken}`;
-//   return config;
-// });
+api.interceptors.request.use(function (config) {
+  const accessToken = document.cookie.split(";")[0].split("=")[1];
+  config.headers.Authorization = `${accessToken}`;
+  return config;
+});
 
 export const apis = {
   // loginSlice

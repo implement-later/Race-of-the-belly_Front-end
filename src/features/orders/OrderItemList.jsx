@@ -23,6 +23,7 @@ const OrderItemList = () => {
     restaurantUsername: "String",
     orderDetailsList: [],
   });
+  console.log(menuList);
   // 초기에 레스토랑 id에 따라 보여질 메뉴 dispatch해서 reducer의 orderingList 배열에 넣어준다.
   useEffect(() => {
     dispatch(__getOrderingMenuThunk(restaurantId));
