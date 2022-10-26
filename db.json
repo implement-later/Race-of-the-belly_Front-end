@@ -125,11 +125,6 @@
   ],
   "menu": [
     {
-      "id": 1,
-      "menuName": "초로밥",
-      "price": "120"
-    },
-    {
       "id": 2,
       "menuName": "누가바",
       "price": 30000
@@ -161,14 +156,63 @@
       "restaurantUsername": "String",
       "orderDetailsList": [
         {
+          "menuId": 1,
           "menuName": "초밥",
-          "count": 2
+          "price": 13000,
+          "menuCnt": 1
         },
         {
-          "menuName": "김밥",
-          "count": 1
+          "menuId": 2,
+          "menuName": "덮밥",
+          "price": 20000,
+          "menuCnt": 1
+        },
+        {
+          "menuId": 3,
+          "menuName": "누가바",
+          "price": 30000,
+          "menuCnt": 1
         }
-      ]
+      ],
+      "id": 1
+    },
+    {
+      "memberUsername": "String",
+      "restaurantUsername": "String",
+      "orderDetailsList": [
+        {
+          "menuId": 4,
+          "menuName": "초밥",
+          "price": 13000,
+          "menuCnt": 1
+        },
+        {
+          "menuId": 6,
+          "menuName": "누가바",
+          "price": 30000,
+          "menuCnt": 1
+        }
+      ],
+      "id": 2
+    },
+    {
+      "memberUsername": "String",
+      "restaurantUsername": "String",
+      "orderDetailsList": [
+        {
+          "menuId": 1,
+          "menuName": "초밥",
+          "price": 13000,
+          "menuCnt": 1
+        },
+        {
+          "menuId": 2,
+          "menuName": "덮밥",
+          "price": 20000,
+          "menuCnt": 1
+        }
+      ],
+      "id": 3
     }
   ]
 }

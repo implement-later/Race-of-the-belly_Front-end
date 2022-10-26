@@ -4,15 +4,15 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 //axios 전역 설정
 
-const cookies = new Cookies();
-export const getUsersApi = async () => {
-  const accessToken = cookies.get("Authorization");
-  return await axios.get(`${ServerUrl}/`, {
-    headers: {
-      Authorizition: accessToken,
-    },
-  });
-};
+// const cookies = new Cookies();
+// export const getUsersApi = async () => {
+//   const accessToken = cookies.get("Authorization");
+//   return await axios.get(`${ServerUrl}/`, {
+//     headers: {
+//       Authorizition: accessToken,
+//     },
+//   });
+// };
 
 // 백업
 // export const addUsersApi = async (payload) => {

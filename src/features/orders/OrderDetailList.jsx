@@ -5,8 +5,12 @@ import MenuCard from "../../components/MenuCard";
 import { __getOrderDetailThunk } from "../../redux/modules/orderlistSlice";
 
 const OrderDetailList = () => {
-  //   const { id } = useParams();
-  const orderdetail = useSelector((state) => state.orderdetail.orderdetail);
+  const { orderId } = useParams();
+  const orderdetail = useSelector(
+    (state) => state.orderdetail.orderdetail.data
+  );
+
+  console.log(orderdetail);
   const dispatch = useDispatch();
 
   //retaurant id로 메뉴조회
@@ -16,7 +20,7 @@ const OrderDetailList = () => {
 
   return (
     <div>
-      {orderdetail[0]?.map((item) => (
+      {orderdetail?.map((item) => (
         <MenuCard key={item.id} item={item}></MenuCard>
       ))}
     </div>

@@ -30,7 +30,7 @@ const Router = () => {
         <Route path="/owner/orders" element={<OwnerOrders />} />
         {/* 내부분 */}
         {/* 둘 다 접근 가능 */}
-        <Route path="/orderdetail/:orderid" element={<OrderDetail />} />
+        <Route path="/orderdetail/:orderId" element={<OrderDetail />} />
         {/* <Route path="/order/:id" element={<UserOrderDetail />} /> */}
       </Routes>
     </BrowserRouter>

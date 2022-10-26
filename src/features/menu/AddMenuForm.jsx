@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { __addMenuByIdThunk } from "../../redux/modules/menulistSlice";
 
 const AddMenuForm = () => {
-  const { id } = useParams();
+  const { restaurantId } = useParams();
   const dispatch = useDispatch();
   const [files, setFiles] = useState("");
   const [preview, setPreview] = useState();
@@ -16,7 +16,7 @@ const AddMenuForm = () => {
     menuName: "",
     price: "",
     desc: "",
-    restaurantId: id,
+    restaurantId: restaurantId,
   });
 
   const { menuName, price, desc } = menuObj;
@@ -24,35 +24,34 @@ const AddMenuForm = () => {
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setMenuObj({ ...menuObj, [name]: value });
-    console.log(menuObj);
   };
 
-  const onImgChange = (e) => {
-    if (e.target.files) {
-      const uploadFile = e.target.files[0];
-      const formData = new FormData();
-      formData.append("files", uploadFile);
-      setMenuObj({ ...menuObj, img: formData });
-      setPreview(URL.createObjectURL(uploadFile));
-      console.log(preview);
-    }
-  };
+  // const onImgChange = (e) => {
+  //   if (e.target.files) {
+  //     const uploadFile = e.target.files[0];
+  //     const formData = new FormData();
+  //     formData.append("files", uploadFile);
+  //     setMenuObj({ ...menuObj, img: formData });
+  //     setPreview(URL.createObjectURL(uploadFile));
+  //   }
+  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__addMenuByIdThunk(menuObj));
+    // console.log(menuObj);
   };
 
   return (
     <StContainerDiv>
       <StDiv>
         <img src="" />
-        <Input
+        {/* <Input
           type="file"
           name="file"
           accept="image/*"
-          onChange={onImgChange}
-        ></Input>
+          // onChange={onImgChange}
+        ></Input> */}
       </StDiv>
       <Stform onSubmit={onSubmitHandler}>
         <StInput
