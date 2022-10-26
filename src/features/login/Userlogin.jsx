@@ -12,7 +12,7 @@ function Userlogin() {
   const [isRestaurant, setIsRestaurant] = useState(false);
 
   const { user } = useSelector((state) => state.user);
-
+  console.log(user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function Userlogin() {
     if (isRestaurant === false) {
       navigate("/restaurant-list");
     } else {
-      navigate("/owner/orders");
+      navigate(`/owner/${user.userename}`);
     }
 
     setUsername("");

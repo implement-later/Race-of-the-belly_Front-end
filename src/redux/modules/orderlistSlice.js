@@ -23,7 +23,6 @@ export const __getOrderingMenuThunk = createAsyncThunk(
   "GET_ORDERING_MENU",
   async (payload, thunkAPI) => {
     try {
-      console.log(payload);
       const { data } = await apis.getorderingmenu(payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
@@ -37,7 +36,21 @@ export const __postOrderMenuThunk = createAsyncThunk(
   "POST_ORDER_MENU",
   async (payload, thunkAPI) => {
     try {
+      const orderDetail = payload.orderDetailsList;
+
+      const dupArr = [];
+      for (let i = 0; i < orderDetail.length; i++) {
+        const obj = {};
+
+        obj.menuName = orderDetail[i].menuName;
+        obj.count = orderDetail[i].count;
+
+        dupArr.push(obj);
+      }
+      payload.orderDetailsList = dupArr;
+
       const { data } = await apis.postorder(payload);
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -56,7 +69,7 @@ export const orderdetailSlice = createSlice({
     addMenuCnt: (state, action) => {
       state.orderingList.map((obj) => {
         if (obj.menuId === action.payload) {
-          return (obj.menuCnt += 1);
+          return (obj.count += 1);
         } else {
           return { ...obj };
         }
@@ -65,7 +78,7 @@ export const orderdetailSlice = createSlice({
     minusMenuCnt: (state, action) => {
       state.orderingList.map((obj) => {
         if (obj.menuId === action.payload) {
-          return (obj.menuCnt -= 1);
+          return (obj.count -= 1);
         } else {
           return { ...obj };
         }
@@ -91,7 +104,7 @@ export const orderdetailSlice = createSlice({
     [__getOrderingMenuThunk.fulfilled]: (state, action) => {
       const dupArr = action.payload.map((obj) => ({
         ...obj,
-        menuCnt: 0,
+        count: 0,
       }));
       state.orderingList = dupArr;
     },

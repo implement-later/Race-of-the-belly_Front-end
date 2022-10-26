@@ -43,10 +43,7 @@ export const __postLogin = createAsyncThunk(
   "postLogin",
   async (payload, thunkAPI) => {
     try {
-      console.log(payload);
       const res = await apis.login(payload);
-      console.log(res);
-      console.log(res.headers.authorization);
       // token이란 이름으로 쿠키 저장, 마지막은 파라미터는 만료시간 설정해주는 것.
       setCookie("Authorization", res.headers.authorization, 7);
       return thunkAPI.fulfillWithValue(res.data);
