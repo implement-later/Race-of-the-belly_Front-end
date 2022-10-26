@@ -168,6 +168,25 @@
         }
       ],
       "id": 2
+    },
+    {
+      "memberUsername": "String",
+      "restaurantUsername": "String",
+      "orderDetailsList": [
+        {
+          "menuId": 1,
+          "menuName": "초밥",
+          "price": 13000,
+          "menuCnt": 1
+        },
+        {
+          "menuId": 2,
+          "menuName": "덮밥",
+          "price": 20000,
+          "menuCnt": 1
+        }
+      ],
+      "id": 3
     }
   ]
 }

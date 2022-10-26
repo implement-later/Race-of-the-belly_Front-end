@@ -23,6 +23,7 @@ export const __getOrderingMenuThunk = createAsyncThunk(
   "GET_ORDERING_MENU",
   async (payload, thunkAPI) => {
     try {
+      console.log(payload);
       const { data } = await apis.getorderingmenu(payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {

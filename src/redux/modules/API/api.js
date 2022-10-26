@@ -29,7 +29,7 @@ export const apis = {
   getmenu: (payload) => api.get(`/restaurant/${payload}`),
 
   //orderlistSlice
-  getorderdetail: (payload) => api.get(`$/order?orderId=${payload}`),
-  getorderingmenu: (payload) => api.get(`$/restaurant/${payload}`),
+  getorderdetail: (payload) => api.get(`/order?orderId=${payload}`),
+  getorderingmenu: (payload) => api.get(`/restaurant/${payload}`),
   postorder: (payload) => api.post(`/order`, payload),
 };
