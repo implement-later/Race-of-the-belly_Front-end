@@ -22,7 +22,7 @@ const MainCard = () => {
             return (
               <StDiv
                 key={idx}
-                mg="20px 0px 0px 30px"
+                mg="50px 0px 0px 20px"
                 pd="30px"
                 wd="300px"
                 hg="200px"
@@ -32,9 +32,11 @@ const MainCard = () => {
                 }}
               >
                 <Stdiv>
-                  <div>{val.id}</div>
-                  <div>{val.restaurantName}</div>
-                  <div>{val.restaurantUsername}</div>
+                  <Text>{val.id}</Text>
+                  <br />
+                  <Text>{val.restaurantName}</Text>
+                  <br />
+                  <Text>{val.restaurantUsername}</Text>
                 </Stdiv>
               </StDiv>
             );
@@ -45,14 +47,15 @@ const MainCard = () => {
 };
 
 export default MainCard;
+
 const Stdiv = styled.div`
   font-size: 30px;
 `;
 
-const Img = styled.div`
-  background: white;
-  inline-size: block;
-`;
+// const Img = styled.div`
+//   background: white;
+//   inline-size: block;
+// `;
 
 const StDiv = styled(Wrapper)`
   border: 3px solid #fcbe32;
@@ -63,4 +66,9 @@ const StDiv = styled(Wrapper)`
   flex-wrap: wrap;
 `;
 
-const StDiv1 = styled.div``;
+const Text = styled.text`
+  margin-top: 5px;
+  height: 50px;
+  font-size: 30px;
+  font-family: "Noto Sans KR", sans-serif;
+`;

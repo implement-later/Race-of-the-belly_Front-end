@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Example from "../pages/Example";
 import Login from "../pages/Login";
@@ -18,6 +17,8 @@ const Router = () => {
         {/* <Route path="/" element={<Example />} /> */}
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/" element={<Login />} />
+
+        {/* // 로그인 boolean 값 이동페이지 */}
         <Route path="/member/signup" element={<SignUp />} />
         {/* user 접근가능 */}
         <Route path="/restaurant-list" element={<Main />} />
