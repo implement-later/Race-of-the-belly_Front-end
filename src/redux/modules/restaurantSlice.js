@@ -6,6 +6,7 @@ export const __getRestaurantList = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await apis.restaurantlist();
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -23,9 +24,9 @@ const restaurantSlice = createSlice({
   name: "restaurantlist",
   initialState,
   reducers: {
-    getRestaurantList: (state, action) => {
-      state.restaurantlist = action.payload;
-    },
+    // getRestaurantList: (state, action) => {
+    //   state.restaurantlist = action.payload;
+    // },
   },
   extraReducers: {
     [__getRestaurantList.pending]: (state) => {
@@ -33,7 +34,7 @@ const restaurantSlice = createSlice({
     },
     [__getRestaurantList.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.restaurantlist = action.payload;
+      state.restaurantlist = action.payload.data;
     },
     [__getRestaurantList.rejected]: (state, action) => {
       state.isLoading = false;

@@ -21,7 +21,7 @@ const OwnerMenuCard = ({ menu }) => {
   const [updateMenu, setUpdateMenu] = useState();
 
   const { menuName, price } = menuObj;
-  // console.log(menuItem);
+  console.log(menuName);
 
   useEffect(() => {
     setUpdateMenu(menuItem);
@@ -40,14 +40,16 @@ const OwnerMenuCard = ({ menu }) => {
     if (isEdit) {
       setMenuObj(delete menuObj.menuId);
       console.log(menuObj);
-      dispatch(__updateMenuThunk({ ...menuObj }));
+      const id = menu.menuId;
+      dispatch(__updateMenuThunk({ menuObj, id }));
     }
     setIsEdit(false);
   };
   // 수정 버튼 누를시
   const editChangeHandler = () => {
     setIsEdit(true);
-    dispatch(__getMenuThunk(menu.id));
+    console.log(menu.menuId);
+    dispatch(__getMenuThunk(menu.menuId));
   };
 
   const delBtnHandler = () => {

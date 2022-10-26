@@ -24,6 +24,12 @@
       "password": "asdasd",
       "isRestaurant": false,
       "id": 4
+    },
+    {
+      "username": "username6",
+      "password": "password6!",
+      "isRestaurant": false,
+      "id": 5
     }
   ],
   "restaurantlist": [

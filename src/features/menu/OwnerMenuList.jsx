@@ -87,4 +87,6 @@ const StCategoryDiv = styled(Wrapper)`
     opacity: 1;
   }
 `;
-const StLink = styled(Link)``;
+const StLink = styled(Link)`
+  font-size: 20px;
+`;
