@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { deleteCookie, setCookie } from "../../shared/Cookie";
+import { setCookie } from "../../shared/Cookie";
 import { apis } from "../modules/API/api";
 
 export const __postSignup = createAsyncThunk(
@@ -29,8 +29,6 @@ export const __postLogin = createAsyncThunk(
     }
   }
 );
-
-deleteCookie("Authorization");
 
 const initialState = {
   user: {},

@@ -18,25 +18,22 @@ const MainCard = () => {
   return (
     <>
       {mainlist && mainlist.length > 0
-        ? mainlist.map((val, idx) => {
+        ? mainlist.map((restaurant, idx) => {
             return (
               <StDiv
                 key={idx}
-                mg="50px 0px 0px 20px"
+                mg="50px 0px 0px 40px"
                 pd="30px"
                 wd="300px"
                 hg="200px"
                 inline="background: #e1eef6 ; "
                 onClick={() => {
-                  navigate(`/order/${val.id}`);
+                  navigate(`/order/${restaurant.id}`);
                 }}
               >
                 <Stdiv>
-                  <Text>{val.id}</Text>
+                  <div>{restaurant.name}</div>
                   <br />
-                  <Text>{val.restaurantName}</Text>
-                  <br />
-                  <Text>{val.restaurantUsername}</Text>
                 </Stdiv>
               </StDiv>
             );
@@ -64,11 +61,4 @@ const StDiv = styled(Wrapper)`
   width: 300px;
   display: flex;
   flex-wrap: wrap;
-`;
-
-const Text = styled.text`
-  margin-top: 5px;
-  height: 50px;
-  font-size: 30px;
-  font-family: "Noto Sans KR", sans-serif;
 `;
