@@ -41,11 +41,7 @@ function UsersignUp() {
   const onSubmitHandle = (e) => {
     e.preventDefault();
 
-    if (
-      passwordConfirmMessage &&
-      usernameMessage &&
-      isPasswordConfirm === true
-    ) {
+    if (isName && isPassword && isPasswordConfirm === true) {
       dispatch(__postSignup(postSignup));
       alert("회원가입에 성공하셨습니다.");
       navigate("/");

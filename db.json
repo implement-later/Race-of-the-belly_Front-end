@@ -5,23 +5,18 @@
       "password": "ruddlfz1!",
       "isRestaurant": false,
       "restaurantName": "",
-      "nickName": "kki147"
+      "nickName": "ruadk"
     },
     {
-      "id": "ruddlfdl1",
-      "password": "ruddlf1!",
+      "id": "abcde",
+      "password": "ruddlfz1!",
       "isRestaurant": true,
-      "restaurantName": "햄버거",
-      "nickName": "kki123"
+      "restaurantName": "kki147",
+      "nickName": "ki147"
     },
     {
-      "id": "zzz",
-      "password": "asd123",
-      "isRestaurant": true
-    },
-    {
-      "id": "asdasd",
-      "password": "asdasd",
+      "id": "kki147",
+      "password": "ruddlfz1!",
       "isRestaurant": false
     },
     {
@@ -30,8 +25,13 @@
       "isRestaurant": false
     },
     {
-      "id": "asfasf",
-      "password": "asfasfas",
+      "id": "asdasd",
+      "password": "asdasd",
+      "isRestaurant": false
+    },
+    {
+      "id": "asfasfzxc123",
+      "password": "asdsaczxcassd",
       "isRestaurant": false
     }
   ],
@@ -223,6 +223,12 @@
         }
       ],
       "id": 3
+    },
+    {
+      "memberUsername": "String",
+      "restaurantUsername": "String",
+      "orderDetailsList": [],
+      "id": 4
     }
   ]
 }

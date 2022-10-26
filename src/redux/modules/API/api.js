@@ -1,8 +1,8 @@
 import axios from "axios";
-import { JasonUrl, ServerUrl } from "../../../sever";
+import { JasonUrl } from "../../../sever/index";
 
 const api = axios.create({
-  baseURL: JasonUrl,
+  baseURL: "http://localhost:8080",
   //   headers: {
   //     "content-type": "application/json",
   //     accept: "*/*",
@@ -17,10 +17,13 @@ const api = axios.create({
 
 export const apis = {
   // loginSlice
-  login: (payload) => api.post("/member/login", payload),
+  login: (payload) => api.post(`/user`, payload),
 
   // signupSlice
-  signup: (payload) => api.post("/member/signup", payload),
+  signup: (payload) => api.post(`/user`, payload),
+
+  //restaurantSlice
+  restaurantlist: (payload) => api.get("/restaurantlist/"),
 
   // menulistSlice
   getmenulist: (payload) => api.get(`/restaurant/${payload}`),

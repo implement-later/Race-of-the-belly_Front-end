@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Wrapper from "../elem/Wrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { __getList } from "../redux/modules/restaurantlistSlice/restaurantSlice";
+import { __getRestaurantList } from "../redux/modules/restaurantSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 

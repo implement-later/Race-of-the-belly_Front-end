@@ -1,48 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLocation } from "react";
 import Wrapper from "../elem/Wrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { __getList } from "../redux/modules/restaurantlistSlice/restaurantSlice";
+import { __getRestaurantList } from "../redux/modules/restaurantSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const MainCard = () => {
+  const mainlist = useSelector((state) => state.restaurantlist.restaurantlist);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const dispatch = useDispatch();
-  // const list = useSelector((state) => state.restaurantlist.restaurantlist);
-  // console.log(list);
-
-  // const menu = list.find((restaurantlist) => restaurantlist.id === Number(id));
-
-  // const { restaurantName } = useParams;
-  // useEffect(() => {
-  //   dispatch(__getList(restaurantName));
-  // }, [dispatch, restaurantName]);
-  // console.log(restaurantName);
-  // const restaurantlist = useSelector(
-  //   (state) => state.restaurantlist.restaurantlist
-  // );
-
-  // const dispatch = useDispatch();
-  // const list = useSelector((state) => state.restaurantlist.restaurantlist);
-
-  // const initialState = { ...menu };
-  // const [menuObj, setMenuObj] = useState(initialState);
-  // const { restaurantName, thumbnail } = menuObj;
-  // // const dispatch = useDispatch();
-  // console.log(list);
-
-  // const [list, setList] = useState(null);
-  // useEffect(() => {
-  //   dispatch(__getList(list));
-  // }, []);
-  // console.log(list);
-  // const item = list[{ createdAt, id, restaurantName, thumbnail }];
-  // console.log(item);
-  // console.log(createdAt, id, restaurantName, thumbnail);
-  // const noway = list.find(
-  //   (restaurantlist) => restaurantlist.restaurantName == restaurantName
-  // );
+  let { params } = useParams(1);
+  console.log(mainlist);
+  const id = useEffect(() => {
+    dispatch(__getRestaurantList(1));
+  }, []);
 
   return (
     <>
@@ -57,6 +28,7 @@ const MainCard = () => {
         }}
       >
         <Stdiv>
+          <div>현재 페이지의 파라미터는 {params} 입니다</div>
           <Img>123</Img>
           <StDiv1>asd</StDiv1>
         </Stdiv>
