@@ -14,9 +14,9 @@ const AddMenuForm = () => {
 
   const [menuObj, setMenuObj] = useState({
     menuName: "",
-    price: "",
-    desc: "",
-    restaurantId: restaurantId,
+    price: 0,
+    // desc: "",
+    // restaurantId: restaurantId,
   });
 
   const { menuName, price, desc } = menuObj;
@@ -61,7 +61,7 @@ const AddMenuForm = () => {
           onChange={onChangeHandler}
           placeholder="음식명"
         />
-        <textarea
+        {/* <textarea
           value={desc}
           name="desc"
           id=""
@@ -69,7 +69,7 @@ const AddMenuForm = () => {
           rows="10"
           onChange={onChangeHandler}
           placeholder="음식 설명"
-        ></textarea>
+        ></textarea> */}
         <StInput
           type="number"
           name="price"

@@ -144,31 +144,13 @@
       "username": "ㅁㄴㅇㅁㄴㅇ",
       "password": "asdasd",
       "isRestaurant": false,
-      "id": 24
+      "id": 4
     },
     {
-      "username": "asdas",
-      "password": "zxczx123",
+      "username": "username6",
+      "password": "password6!",
       "isRestaurant": false,
-      "id": 25
-    },
-    {
-      "username": "123123asd",
-      "password": "asdasdads",
-      "isRestaurant": false,
-      "id": 26
-    },
-    {
-      "username": "ㅁㄴㅇ",
-      "password": "asd",
-      "isRestaurant": false,
-      "id": 27
-    },
-    {
-      "username": "ㅁㄴㅇ",
-      "password": "asd",
-      "isRestaurant": false,
-      "id": 28
+      "id": 5
     }
   ],
   "restaurantlist": [

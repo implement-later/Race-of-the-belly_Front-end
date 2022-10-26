@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __postLogin } from "./../../redux/modules/loginSlice";
 import Wrapper from "../../elem/Wrapper";
 import styled from "styled-components";
+import { __getRestaurantList } from "../../redux/modules/restaurantSlice";
 
 function Userlogin() {
   // id, apssword, boolean
@@ -11,8 +12,8 @@ function Userlogin() {
   const [password, setPassword] = useState("");
   const [isRestaurant, setIsRestaurant] = useState(false);
 
-  const { user } = useSelector((state) => state.user);
-  console.log(user);
+  const { user } = useSelector((state) => state);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,17 +30,15 @@ function Userlogin() {
 
     if (username === "") return alert("아이디를 입력하세요");
     if (password === "") return alert("패스워드를 입력하세요");
-    console.log(postLogin);
     dispatch(__postLogin(postLogin));
     // console.log(isRestaurant);
     // boolean 값에 따라 이동
-    console.log(isRestaurant === false);
+    console.log(isRestaurant);
     if (isRestaurant === false) {
       console.log(123);
       navigate("/restaurant-list");
     } else {
-      console.log(999);
-      navigate(`/owner/${user.userename}`);
+      navigate(`/owner/${user.user.data.id}`);
     }
 
     setUsername("");
@@ -58,7 +57,7 @@ function Userlogin() {
         >
           <h1>Login</h1>
           <br />
-          <form onSubmit={(e) => onSubmitHandle(e)}>
+          <form onSubmit={onSubmitHandle}>
             <InputBox>
               <input
                 type="text"

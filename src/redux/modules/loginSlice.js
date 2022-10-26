@@ -22,6 +22,7 @@ export const __postLogin = createAsyncThunk(
       const res = await apis.login(payload);
       // token이란 이름으로 쿠키 저장, 마지막은 파라미터는 만료시간 설정해주는 것.
       setCookie("Authorization", res.headers.authorization, 7);
+      setCookie("Refresh-token", res.headers["refresh-token"], 7);
       return thunkAPI.fulfillWithValue(res.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -32,7 +33,7 @@ export const __postLogin = createAsyncThunk(
 deleteCookie("Authorization");
 
 const initialState = {
-  user: [],
+  user: {},
   isLogin: false,
   isLoading: false,
   error: null,
@@ -45,9 +46,9 @@ const loginiSlice = createSlice({
     postSignUp: (state, action) => {
       state.user.push(action.payload);
     },
-    postLogin: (state, action) => {
-      state.user.push(action.payload);
-    },
+    // postLogin: (state, action) => {
+    //   state.user.push(action.payload);
+    // },
   },
 
   extraReducers: {

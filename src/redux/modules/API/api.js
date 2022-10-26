@@ -2,7 +2,7 @@ import axios from "axios";
 import { JasonUrl, ServerUrl } from "../../../sever/index";
 
 const api = axios.create({
-  baseURL: JasonUrl,
+  baseURL: ServerUrl,
   headers: {
     "Content-Type": "application/json",
     accept: "*/*",
@@ -11,19 +11,19 @@ const api = axios.create({
 
 api.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split(";")[0].split("=")[1];
-  config.headers.Authorization = `${accessToken}`;
+  config.headers.Authorization = accessToken;
   return config;
 });
 
 export const apis = {
   // loginSlice
-  login: (payload) => api.post(`/user`, payload),
+  login: (payload) => api.post(`/member/login`, payload),
 
   // signupSlice
-  signup: (payload) => api.post(`/user`, payload),
+  signup: (payload) => api.post(`/member/signup`, payload),
 
   //restaurantSlice
-  restaurantlist: (payload) => api.get("/restaurantlist/"),
+  restaurantlist: () => api.get("/restaurant"),
 
   // customerlistSlice
   customerlist: (payload) => api.get("/customerlist/"),
@@ -35,7 +35,7 @@ export const apis = {
 
   delmenu: (payload) => api.delete(`/menu/${payload}`),
 
-  update: (payload) => api.patch(`/menu/${payload.menuId}`, payload),
+  update: (payload) => api.patch(`/menu/${payload.id}`, payload.menuObj),
 
   //menuSlice
   getmenu: (payload) => api.get(`/restaurant/${payload}`),
