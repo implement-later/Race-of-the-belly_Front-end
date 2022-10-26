@@ -155,61 +155,24 @@
   ],
   "restaurantlist": [
     {
-      "restaurantName": "노걸대",
+      "restaurantname": "노걸대",
       "restaurantUsername": "뭐가 다른가요",
       "id": 1
     },
     {
-      "restaurantName": "원할머니",
+      "restaurantname": "원할머니",
       "restaurantUsername": "이건",
       "id": 2
     },
     {
-      "restaurantName": "맥도날드",
+      "restaurantname": "맥도날드",
       "restaurantUsername": "또",
       "id": 3
     },
     {
-      "restaurantName": "장충동",
+      "restaurantname": "장충동",
       "restaurantUsername": "아이디랑",
       "id": 4
-    }
-  ],
-  "customerlist": [
-    {
-      "id": 1,
-      "orderId": "kasbk123",
-      "menuName": "파인애플",
-      "menuPrice": 14522,
-      "menuCnt": 2
-    },
-    {
-      "id": 2,
-      "orderId": "kki147",
-      "menuName": "피자",
-      "menuPrice": 26000,
-      "menuCnt": 4
-    },
-    {
-      "id": 3,
-      "orderId": "k12347",
-      "menuName": "햄버거",
-      "menuPrice": 102600,
-      "menuCnt": 100
-    },
-    {
-      "id": 4,
-      "orderId": "kajksblf47",
-      "menuName": "족발",
-      "menuPrice": 5000,
-      "menuCnt": 1
-    },
-    {
-      "id": 5,
-      "orderId": "kasjkbg27",
-      "menuName": "피자국밥",
-      "menuPrice": 78000,
-      "menuCnt": 10
     }
   ],
   "restaurant": [
@@ -437,6 +400,26 @@
         }
       ],
       "id": 7
+    }
+  ],
+  "customerlist": [
+    {
+      "restaurantUsername": "asd",
+      "memberUsername": "assd",
+      "price": 13000,
+      "id": 1
+    },
+    {
+      "restaurantUsername": "asd",
+      "memberUsername": "ass123123d",
+      "price": 13242000,
+      "id": 2
+    },
+    {
+      "restaurantUsername": "asd123123",
+      "memberUsername": "a2424ssd",
+      "price": 132424000,
+      "id": 3
     }
   ]
 }

@@ -1,43 +1,48 @@
 import React, { useEffect } from "react";
 import Wrapper from "../elem/Wrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { __getCustomerList } from "../redux/modules/customerlistSlice";
-import { __getRestaurantList } from "../redux/modules/restaurantSlice";
+import { __getCustomerlist } from "../redux/modules/customerlistSlice";
+
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const OrderCard = () => {
-  const navigate = useNavigate();
+  const newlist = useSelector((state) => state.customerlist.customerlist);
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.customerlist.customerlist);
-  // const mainlist = useSelector((state) => state.restaurantlist.restaurantlist);
-  // console.log(mainlist);
-  console.log(list);
-  // useEffect(() => {
-  //   dispatch(__getRestaurantList(mainlist));
-  // }, []);
-  console.log(1);
+  const navigate = useNavigate();
+
+  console.log(newlist);
+
   useEffect(() => {
-    dispatch(__getCustomerList(list));
+    dispatch(__getCustomerlist(1));
   }, []);
-  console.log(1);
+
+  // {restaurantUsername: 'asd', memberUsername: 'assd', price: 13000, id: 1}
   return (
     <>
-      <StDiv
-        mg="20px auto"
-        pd="30px"
-        wd="300px"
-        hg="200px"
-        inline="background: #e1eef6 ; "
-        onClick={() => {
-          navigate("/owner/:restaurantId");
-        }}
-      >
-        <Stdiv>
-          <StDiv1>asd</StDiv1>
-          <Img>123</Img>
-        </Stdiv>
-      </StDiv>
+      123
+      {newlist && newlist.length > 0
+        ? newlist.map((val, idx) => {
+            return (
+              <StDiv
+                key={idx}
+                mg="50px 0px 0px 40px"
+                pd="30px"
+                wd="300px"
+                hg="200px"
+                inline="background: #e1eef6 ; "
+                onClick={() => {
+                  navigate(`/order/${val.id}`);
+                }}
+              >
+                <Stdiv>
+                  <div>{val.restaurantUsername}</div>
+                  <br />
+                </Stdiv>
+              </StDiv>
+            );
+          })
+        : ""}
     </>
   );
 };

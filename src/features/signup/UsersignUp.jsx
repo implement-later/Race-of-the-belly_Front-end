@@ -33,10 +33,9 @@ function UsersignUp() {
   const postSignup = {
     // id: username,
     username: username,
-    name: (name, restaurantName),
+    name: name || restaurantName,
     password: password,
     isRestaurant: isRestaurant,
-    // restaurantName: restaurantName,
   };
 
   const onSubmitHandle = (e) => {

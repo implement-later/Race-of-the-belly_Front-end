@@ -17,8 +17,9 @@ const Header = () => {
         <Button
           onClick={(e) => {
             deleteCookie("Authorization");
-            navigate("/");
+            deleteCookie("Refresh-token");
             alert("로그아웃 되셨습니다.");
+            navigate("/");
           }}
         >
           Logo out

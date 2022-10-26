@@ -2,7 +2,7 @@ import axios from "axios";
 import { JasonUrl, ServerUrl } from "../../../sever/index";
 
 const api = axios.create({
-  baseURL: ServerUrl,
+  baseURL: JasonUrl,
   headers: {
     "Content-Type": "application/json",
     accept: "*/*",
