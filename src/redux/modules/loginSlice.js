@@ -2,30 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { setCookie } from "../../shared/Cookie";
 import { apis } from "../modules/API/api";
 
-// export const __getUsers = createAsyncThunk(
-//   "getUsers",
-//   async (payload, thunkAPI) => {
-//     try {
-//       const { data } = await getUsersApi();
-//       return thunkAPI.fulfillWithValue(data);
-//     } catch (err) {
-//       return thunkAPI.rejectWithValue(err);
-//     }
-//   }
-// );
-
-// export const __getUsers = createAsyncThunk(
-//   "getUsers",
-//   async (payload, thunkAPI) => {
-//     try {
-//       const data = await getUsersApi();
-//       return thunkAPI.fulfillWithValue(data);
-//     } catch (err) {
-//       return thunkAPI.rejectWithValue(err);
-//     }
-//   }
-// );
-
 export const __postSignup = createAsyncThunk(
   "postSignUp",
   async (payload, thunkAPI) => {
@@ -55,23 +31,6 @@ export const __postLogin = createAsyncThunk(
     }
   }
 );
-
-// export const __addUsers = createAsyncThunk(
-//   "addUsers",
-//   async (payload, thunkAPI) => {
-//     try {
-//       const response = await axios.post(`${ServerUrl}/user`, payload);
-//       // console.log(payload);
-//       // console.log(response);
-//       // setCookie("password", `BEARER ${response.data.password}`);
-//       // setCookie("uesername", `${response.data.id}`);
-
-//       return thunkAPI.fulfillWithValue(response.data);
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );
 
 const initialState = {
   user: [],

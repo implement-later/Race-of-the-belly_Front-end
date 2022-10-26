@@ -9,6 +9,9 @@ function OwnerOrders() {
     <>
       <Header />
       <Layout>
+        <span>
+          <h1>Customer List</h1>
+        </span>
         <OrderCards />
       </Layout>
     </>

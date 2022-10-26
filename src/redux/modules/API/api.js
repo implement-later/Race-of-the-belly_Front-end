@@ -1,8 +1,8 @@
 import axios from "axios";
-import { JasonUrl, ServerUrl } from "../../../sever";
+import { JasonUrl, ServerUrl } from "../../../sever/index";
 
 const api = axios.create({
-  baseURL: ServerUrl,
+  baseURL: JasonUrl,
   headers: {
     "Content-Type": "application/json",
     accept: "*/*",
@@ -17,10 +17,16 @@ api.interceptors.request.use(function (config) {
 
 export const apis = {
   // loginSlice
-  login: (payload) => api.post("/member/login", payload),
+  login: (payload) => api.post(`/user`, payload),
 
   // signupSlice
-  signup: (payload) => api.post("/member/signup", payload),
+  signup: (payload) => api.post(`/user`, payload),
+
+  //restaurantSlice
+  restaurantlist: (payload) => api.get("/restaurantlist/"),
+
+  // customerlistSlice
+  customerlist: (payload) => api.get("/customerlist/"),
 
   // menulistSlice
   getmenulist: (payload) => api.get(`/restaurant/${payload}`),
