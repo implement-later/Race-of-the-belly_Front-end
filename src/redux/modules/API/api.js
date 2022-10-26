@@ -16,6 +16,12 @@ const api = axios.create({
 // });
 
 export const apis = {
+  // loginSlice
+  login: (payload) => api.post("/member/login", payload),
+
+  // signupSlice
+  signup: (payload) => api.post("/member/signup", payload),
+
   // menulistSlice
   getmenulist: (payload) => api.get(`/restaurant/${payload}`),
 

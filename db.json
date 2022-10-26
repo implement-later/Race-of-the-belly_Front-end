@@ -5,33 +5,51 @@
       "password": "ruddlfz1!",
       "isRestaurant": false,
       "restaurantName": "",
-      "nickName": "kki147",
-      "passwordConfirm": "ruddlfz1!"
+      "nickName": "kki147"
+    },
+    {
+      "id": "ruddlfdl1",
+      "password": "ruddlf1!",
+      "isRestaurant": true,
+      "restaurantName": "햄버거",
+      "nickName": "kki123"
+    },
+    {
+      "id": "zzz",
+      "password": "asd123",
+      "isRestaurant": true
+    },
+    {
+      "id": "asdasd",
+      "password": "asdasd",
+      "isRestaurant": false
+    },
+    {
+      "id": "asd",
+      "password": "asd",
+      "isRestaurant": false
+    },
+    {
+      "id": "asfasf",
+      "password": "asfasfas",
+      "isRestaurant": false
     }
   ],
   "restaurantlist": [
     {
       "restaurantName": "노걸대",
-      "thumbnail": "dflsjakfsl",
-      "createdAt": "1",
       "id": "1"
     },
     {
       "restaurantName": "원할머니",
-      "thumbnail": "dflsjakfsl",
-      "createdAt": "2",
       "id": "5"
     },
     {
       "restaurantName": "맥도날드",
-      "thumbnail": "dflsjakfsl",
-      "createdAt": "3",
       "id": "3"
     },
     {
       "restaurantName": "장충동",
-      "thumbnail": "dflsjakfsl",
-      "createdAt": "4",
       "id": " 4"
     }
   ],
@@ -95,6 +113,24 @@
           "price": 30000
         }
       ]
+    },
+    {
+      "menuName": "asd",
+      "price": "2",
+      "desc": "asd",
+      "id": 4
+    },
+    {
+      "menuName": "asd",
+      "price": "2",
+      "desc": "asd",
+      "id": 5
+    },
+    {
+      "menuName": "asf",
+      "price": "3",
+      "desc": "asf",
+      "id": 6
     }
   ],
   "menu": [

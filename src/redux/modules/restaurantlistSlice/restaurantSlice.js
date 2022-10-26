@@ -15,7 +15,28 @@ export const __getList = createAsyncThunk(
 );
 
 const initialState = {
-  restaurantlist: [],
+  restaurantlist: [
+    {
+      restaurantName: "노걸대",
+
+      id: "1",
+    },
+    {
+      restaurantName: "원할머니",
+
+      id: "5",
+    },
+    {
+      restaurantName: "맥도날드",
+
+      id: "3",
+    },
+    {
+      restaurantName: "장충동",
+
+      id: " 4",
+    },
+  ],
   isLoading: false,
   error: null,
 };
