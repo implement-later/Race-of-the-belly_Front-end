@@ -2,18 +2,18 @@ import axios from "axios";
 import { JasonUrl } from "../../../sever/index";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
-  //   headers: {
-  //     "content-type": "application/json",
-  //     accept: "*/*",
-  //   },
+  baseURL: ServerUrl,
+  headers: {
+    "Content-Type": "application/json",
+    accept: "*/*",
+  },
 });
 
-// api.interceptors.request.use(function (config) {
-//   const accessToken = document.cookie.split("=")[1];
-//   config.headers.common["Authrozation"] = `${accessToken}`;
-//   return config;
-// });
+api.interceptors.request.use(function (config) {
+  const accessToken = document.cookie.split(";")[0].split("=")[1];
+  config.headers.Authorization = `${accessToken}`;
+  return config;
+});
 
 export const apis = {
   // loginSlice
@@ -38,7 +38,7 @@ export const apis = {
   getmenu: (payload) => api.get(`/restaurant/${payload}`),
 
   //orderlistSlice
-  getorderdetail: (payload) => api.get(`/order?orderId=${payload}`),
+  getorderdetail: (payload) => api.get(`/order/${payload}`),
   getorderingmenu: (payload) => api.get(`/restaurant/${payload}`),
   postorder: (payload) => api.post(`/order`, payload),
 };

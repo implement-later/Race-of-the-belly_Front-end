@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { setCookie } from "../../shared/Cookie";
 import { apis } from "../modules/API/api";
 
 // export const __getUsers = createAsyncThunk(
@@ -29,8 +30,9 @@ export const __postSignup = createAsyncThunk(
   "postSignUp",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await apis.signup(payload);
-      return thunkAPI.fulfillWithValue(data);
+      const res = await apis.signup(payload);
+
+      return thunkAPI.fulfillWithValue(res.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -41,8 +43,13 @@ export const __postLogin = createAsyncThunk(
   "postLogin",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await apis.login(payload);
-      return thunkAPI.fulfillWithValue(data);
+      console.log(payload);
+      const res = await apis.login(payload);
+      console.log(res);
+      console.log(res.headers.authorization);
+      // token이란 이름으로 쿠키 저장, 마지막은 파라미터는 만료시간 설정해주는 것.
+      setCookie("Authorization", res.headers.authorization, 7);
+      return thunkAPI.fulfillWithValue(res.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

@@ -31,11 +31,12 @@ function UsersignUp() {
 
   // request
   const postSignup = {
-    id: username,
+    // id: username,
+    username: username,
+    name: nickName,
     password: password,
     isRestaurant: isRestaurant,
-    restaurantName: restaurantName,
-    nickName: nickName,
+    // restaurantName: restaurantName,
   };
 
   const onSubmitHandle = (e) => {

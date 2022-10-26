@@ -227,7 +227,26 @@
     {
       "memberUsername": "String",
       "restaurantUsername": "String",
-      "orderDetailsList": [],
+      "orderDetailsList": [
+        {
+          "menuId": 1,
+          "menuName": "초밥",
+          "price": 13000,
+          "menuCnt": 1
+        },
+        {
+          "menuId": 2,
+          "menuName": "덮밥",
+          "price": 20000,
+          "menuCnt": 1
+        },
+        {
+          "menuId": 3,
+          "menuName": "누가바",
+          "price": 30000,
+          "menuCnt": 1
+        }
+      ],
       "id": 4
     }
   ]

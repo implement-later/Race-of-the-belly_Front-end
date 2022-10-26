@@ -5,7 +5,7 @@ const MenuCard = ({ item }) => {
   return (
     <>
       <Stdiv>
-        <div>{item.menuName}</div> <div>{item.menuPrice}원</div>{" "}
+        <div>{item.menuName}</div> <div>{item.price}원</div>{" "}
         <div>{item.menuCnt}개</div>
       </Stdiv>
     </>

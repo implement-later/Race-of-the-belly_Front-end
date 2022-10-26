@@ -18,7 +18,8 @@ function Userlogin() {
 
   // request
   const postLogin = {
-    id: username,
+    // id: username,
+    username: username,
     password: password,
     isRestaurant: isRestaurant,
   };
@@ -28,7 +29,7 @@ function Userlogin() {
 
     if (username === "") return alert("아이디를 입력하세요");
     if (password === "") return alert("패스워드를 입력하세요");
-
+    console.log(postLogin);
     dispatch(__postLogin(postLogin));
 
     // boolean 값에 따라 이동
