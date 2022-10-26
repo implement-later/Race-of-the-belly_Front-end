@@ -9,7 +9,7 @@ const Header = () => {
     <>
       <StDiv>
         <Img
-          onClick={() => navigate("/")}
+          onClick={() => navigate(-1)}
           src={process.env.PUBLIC_URL + "/img/logo.png"}
         ></Img>
         <Img1 src={process.env.PUBLIC_URL + "/img/logo2.png"}></Img1>

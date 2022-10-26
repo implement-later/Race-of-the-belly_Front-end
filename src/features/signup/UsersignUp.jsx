@@ -12,7 +12,7 @@ function UsersignUp() {
   const [passwordConfirm, setPasswordConfirm] = useState(false);
   const [isRestaurant, setIsRestaurant] = useState(false);
   const [restaurantName, setRestaurantName] = useState("");
-  const [nickName, setNickName] = useState("");
+  const [name, setName] = useState("");
 
   //오류메시지 상태저장
   const [usernameMessage, setUsernameMessage] = useState("");
@@ -33,7 +33,7 @@ function UsersignUp() {
   const postSignup = {
     // id: username,
     username: username,
-    name: nickName,
+    name: (name, restaurantName),
     password: password,
     isRestaurant: isRestaurant,
     // restaurantName: restaurantName,
@@ -55,7 +55,7 @@ function UsersignUp() {
     setPassword("");
     setRestaurantName("");
     setPasswordConfirm("");
-    setNickName("");
+    setName("");
   };
 
   // username: 닉네임은 최소 4자 이상, 12자 이하 알파벳 대소문자(a-z, A-Z), 숫자(0-9)로 구성됩니다. ^[a-zA-Z0-9]{4,12}$
@@ -99,10 +99,10 @@ function UsersignUp() {
   return (
     <Divbox>
       <Wrapper
-        mg="40px auto"
+        mg="50px auto"
         pd="30px"
         wd="400px"
-        hg="650px"
+        hg="630px"
         inline="background: #e1eef6; border:none; border-radius: 24px;"
       >
         <h1>SignUp</h1>
@@ -132,20 +132,43 @@ function UsersignUp() {
             구성됩니다.
           </span>
           <br />
-          <InputBox>
+          <br />
+          <br />
+          <StyledLabel htmlFor="Owner">
+            <StyledInput
+              type="checkbox"
+              name="isRestaurant"
+              defaultChecked={false}
+              onChange={(e) => {
+                setIsRestaurant(e.target.checked);
+              }}
+            />
+            <StyledP>Owner</StyledP>
+          </StyledLabel>
+
+          {isRestaurant === true ? (
+            <Modal
+              restaurantName={restaurantName}
+              setRestaurantName={setRestaurantName}
+            />
+          ) : (
+            <Modal1 name={name} setName={setName} />
+          )}
+          <br />
+          {/* <InputBox>
             <input
               type="text"
-              name="nickName"
+              name="name"
               placeholder=" "
               onChange={(e) => {
-                setNickName(e.target.value);
+                setname(e.target.value);
               }}
-              value={nickName || ""}
+              value={name || ""}
               required
             />
-            <label htmlFor="password">닉네임</label>
-          </InputBox>
-          <br />
+            <label htmlFor="password">가게 이름</label>
+          </InputBox> */}
+
           <InputBox>
             <input
               type="password"
@@ -171,6 +194,7 @@ function UsersignUp() {
             특수문자로 구성됩니다.
           </span>
           <br />
+          <br />
           <InputBox>
             <input
               type="password"
@@ -194,7 +218,7 @@ function UsersignUp() {
             </span>
           )}
           <br />
-          <StyledLabel htmlFor="Owner">
+          {/* <StyledLabel htmlFor="Owner">
             <StyledInput
               type="checkbox"
               name="isRestaurant"
@@ -212,7 +236,7 @@ function UsersignUp() {
               setRestaurantName={setRestaurantName}
             />
           ) : null}
-          <br />
+          <br /> */}
           <Button type="submit">Sign up</Button>
         </form>
       </Wrapper>
@@ -235,7 +259,29 @@ function Modal(props) {
           value={props.restaurantName || ""}
           required
         />
-        <label htmlFor="password">가게이름</label>
+        {}
+        <label htmlFor="password">가게이름을 입력해주세요</label>
+      </InputBox>
+    </>
+  );
+}
+
+function Modal1(props) {
+  return (
+    <>
+      <InputBox>
+        <input
+          type="text"
+          name="setName"
+          placeholder=" "
+          onChange={(e) => {
+            props.setName(e.target.value);
+          }}
+          value={props.name || ""}
+          required
+        />
+        {}
+        <label htmlFor="password">닉네임을 입력해주세요</label>
       </InputBox>
     </>
   );

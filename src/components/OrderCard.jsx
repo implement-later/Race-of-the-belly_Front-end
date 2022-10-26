@@ -1,30 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Wrapper from "../elem/Wrapper";
 import { useDispatch, useSelector } from "react-redux";
+import { __getCustomerList } from "../redux/modules/customerlistSlice";
 import { __getRestaurantList } from "../redux/modules/restaurantSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const OrderCard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.restaurantlist.restaurantlist);
-
-  // const dispatch = useDispatch();
-  // console.log(list);
-
-  // const [list, setList] = useState(null);
+  const list = useSelector((state) => state.customerlist.customerlist);
+  // const mainlist = useSelector((state) => state.restaurantlist.restaurantlist);
+  // console.log(mainlist);
+  console.log(list);
   // useEffect(() => {
-  //   dispatch(__getList(list));
+  //   dispatch(__getRestaurantList(mainlist));
   // }, []);
-  // console.log(list);
-  // const item = list[{ createdAt, id, restaurantName, thumbnail }];
-  // console.log(item);
-  // console.log(createdAt, id, restaurantName, thumbnail);
-  // const noway = list.find(
-  //   (restaurantlist) => restaurantlist.restaurantName == restaurantName
-  // );
-
+  console.log(1);
+  useEffect(() => {
+    dispatch(__getCustomerList(list));
+  }, []);
+  console.log(1);
   return (
     <>
       <StDiv
@@ -38,8 +34,8 @@ const OrderCard = () => {
         }}
       >
         <Stdiv>
-          <Img>123{list.restaurantName}</Img>
           <StDiv1>asd</StDiv1>
+          <Img>123</Img>
         </Stdiv>
       </StDiv>
     </>

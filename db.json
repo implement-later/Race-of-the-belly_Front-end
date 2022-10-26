@@ -1,56 +1,88 @@
 {
   "user": [
     {
-      "id": "rla123dlf",
+      "username": "askjbfkb",
+      "name": "asdasdasd",
       "password": "ruddlfz1!",
       "isRestaurant": false,
-      "restaurantName": "",
-      "nickName": "ruadk"
+      "id": 1
     },
     {
-      "id": "abcde",
-      "password": "ruddlfz1!",
-      "isRestaurant": true,
-      "restaurantName": "kki147",
-      "nickName": "ki147"
+      "username": "asd",
+      "password": "asdas",
+      "isRestaurant": false,
+      "id": 2
     },
     {
-      "id": "kki147",
-      "password": "ruddlfz1!",
-      "isRestaurant": false
-    },
-    {
-      "id": "asd",
-      "password": "asd",
-      "isRestaurant": false
-    },
-    {
-      "id": "asdasd",
+      "username": "sadas",
       "password": "asdasd",
-      "isRestaurant": false
+      "isRestaurant": true,
+      "id": 3
     },
     {
-      "id": "asfasfzxc123",
-      "password": "asdsaczxcassd",
-      "isRestaurant": false
+      "username": "sadas",
+      "password": "asdasd",
+      "isRestaurant": false,
+      "id": 4
     }
   ],
   "restaurantlist": [
     {
       "restaurantName": "노걸대",
-      "id": "1"
+      "restaurantUsername": "뭐가 다른가요",
+      "id": 1
     },
     {
       "restaurantName": "원할머니",
-      "id": "5"
+      "restaurantUsername": "이건",
+      "id": 2
     },
     {
       "restaurantName": "맥도날드",
-      "id": "3"
+      "restaurantUsername": "또",
+      "id": 3
     },
     {
       "restaurantName": "장충동",
-      "id": " 4"
+      "restaurantUsername": "아이디랑",
+      "id": 4
+    }
+  ],
+  "customerlist": [
+    {
+      "id": 1,
+      "orderId": "kasbk123",
+      "menuName": "파인애플",
+      "menuPrice": 14522,
+      "menuCnt": 2
+    },
+    {
+      "id": 2,
+      "orderId": "kki147",
+      "menuName": "피자",
+      "menuPrice": 26000,
+      "menuCnt": 4
+    },
+    {
+      "id": 3,
+      "orderId": "k12347",
+      "menuName": "햄버거",
+      "menuPrice": 102600,
+      "menuCnt": 100
+    },
+    {
+      "id": 4,
+      "orderId": "kajksblf47",
+      "menuName": "족발",
+      "menuPrice": 5000,
+      "menuCnt": 1
+    },
+    {
+      "id": 5,
+      "orderId": "kasjkbg27",
+      "menuName": "피자국밥",
+      "menuPrice": 78000,
+      "menuCnt": 10
     }
   ],
   "restaurant": [
@@ -248,6 +280,19 @@
         }
       ],
       "id": 4
+    },
+    {
+      "memberUsername": "String",
+      "restaurantUsername": "String",
+      "orderDetailsList": [
+        {
+          "menuId": 7,
+          "menuName": "초밥",
+          "price": 13000,
+          "menuCnt": 2
+        }
+      ],
+      "id": 5
     }
   ]
 }
