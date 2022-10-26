@@ -23,6 +23,16 @@
       "id": "asdasd",
       "password": "asdasd",
       "isRestaurant": false
+    },
+    {
+      "id": "asd",
+      "password": "asd",
+      "isRestaurant": false
+    },
+    {
+      "id": "asfasf",
+      "password": "asfasfas",
+      "isRestaurant": false
     }
   ],
   "restaurantlist": [

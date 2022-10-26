@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __addUsers } from "./../../redux/modules/login/loginSlice";
+import { __postLogin } from "./../../redux/modules/loginSlice";
 import Wrapper from "../../elem/Wrapper";
 import styled from "styled-components";
 
@@ -29,7 +29,7 @@ function Userlogin() {
     if (username === "") return alert("아이디를 입력하세요");
     if (password === "") return alert("패스워드를 입력하세요");
 
-    dispatch(__addUsers(postLogin));
+    dispatch(__postLogin(postLogin));
 
     // boolean 값에 따라 이동
     if (isRestaurant === false) {

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __addUsers } from "../../redux/modules/login/loginSlice";
+import { __postSignup } from "../../redux/modules/loginSlice";
 import styled from "styled-components";
 import Wrapper from "../../elem/Wrapper";
 
@@ -46,7 +46,7 @@ function UsersignUp() {
       usernameMessage &&
       isPasswordConfirm === true
     ) {
-      dispatch(__addUsers(postSignup));
+      dispatch(__postSignup(postSignup));
       alert("회원가입에 성공하셨습니다.");
       navigate("/");
     } else {
