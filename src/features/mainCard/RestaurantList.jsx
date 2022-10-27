@@ -7,12 +7,6 @@ function RestaurantList() {
   return (
     <>
       <MainCard />
-      {/* {restaurantlist.map((restaurantlist) => (
-        <MainCard
-          restaurantlist={restaurantlist}
-          key={restaurantlist.restaurantName}
-        />
-      ))} */}
     </>
   );
 }

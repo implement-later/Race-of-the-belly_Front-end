@@ -12,8 +12,8 @@ const MainCard = () => {
 
   console.log(mainlist);
   useEffect(() => {
-    dispatch(__getRestaurantList(1));
-  }, []);
+    dispatch(__getRestaurantList());
+  }, [dispatch]);
 
   return (
     <>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { JasonUrl, ServerUrl } from "../../../sever/index";
 
 const api = axios.create({
-  baseURL: JasonUrl,
+  baseURL: ServerUrl,
   headers: {
     "Content-Type": "application/json",
     accept: "*/*",
@@ -10,7 +10,11 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(function (config) {
-  const accessToken = document.cookie.split(";")[0].split("=")[1];
+  const accessToken = document.cookie.split(";")[0].split["="][1];
+  // .find((row) => row.startsWith("Authorization"))
+  // .split("=")
+  // .find((row) => row.startsWith("Bearer"));
+
   config.headers.Authorization = accessToken;
   return config;
 });
@@ -35,7 +39,7 @@ export const apis = {
 
   delmenu: (payload) => api.delete(`/menu/${payload}`),
 
-  update: (payload) => api.patch(`/menu/${payload.id}`, payload.menuObj),
+  update: (payload) => api.put(`/menu/${payload.id}`, payload.menuObj),
 
   //menuSlice
   getmenu: (payload) => api.get(`/restaurant/${payload}`),

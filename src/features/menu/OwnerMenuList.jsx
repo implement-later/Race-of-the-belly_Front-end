@@ -13,6 +13,7 @@ const OwnerMenuList = () => {
   console.log(menuList);
   const dispatch = useDispatch();
 
+  // 레스토랑 아이디로 menulist 가져오기 => menulistByResId
   useEffect(() => {
     dispatch(__getMenuByIdThunk(restaurantId));
   }, [dispatch, restaurantId]);

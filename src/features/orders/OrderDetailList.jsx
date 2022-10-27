@@ -5,15 +5,21 @@ import styled from "styled-components";
 import MenuCard from "../../components/MenuCard";
 import Wrapper from "../../elem/Wrapper";
 import { __getOrderDetailThunk } from "../../redux/modules/orderlistSlice";
+import { __getRestaurantList } from "../../redux/modules/restaurantSlice";
 
 const OrderDetailList = () => {
+  const dispatch = useDispatch();
   const { orderId } = useParams();
   const orderdetail = useSelector(
     (state) => state.orderdetail.orderdetail.data.orderDetailsList
   );
+  const resList = useSelector((state) => state);
+  // console.log(resList);
 
-  console.log(orderdetail);
-  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(__getRestaurantList());
+  }, [dispatch]);
+  // console.log(orderdetail);
 
   //retaurant id로 메뉴조회
   useEffect(() => {

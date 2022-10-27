@@ -25,132 +25,6 @@
       "password": "rla123dlf!",
       "isRestaurant": true,
       "id": 4
-    },
-    {
-      "username": "kkk123",
-      "password": "1232asdasd",
-      "isRestaurant": false,
-      "id": 5
-    },
-    {
-      "username": "asdasd",
-      "password": "asdasda",
-      "isRestaurant": false,
-      "id": 6
-    },
-    {
-      "username": "asdasd",
-      "password": "asdas123",
-      "isRestaurant": true,
-      "id": 7
-    },
-    {
-      "username": "123",
-      "password": "asd",
-      "isRestaurant": false,
-      "id": 8
-    },
-    {
-      "username": "asdasd",
-      "password": "asdasd",
-      "isRestaurant": true,
-      "id": 9
-    },
-    {
-      "username": "asd",
-      "password": "asdasda",
-      "isRestaurant": false,
-      "id": 10
-    },
-    {
-      "username": "ㅁㄴㅇㅁㄴㅇ",
-      "password": "asdasdsa",
-      "isRestaurant": false,
-      "id": 11
-    },
-    {
-      "username": "asdasd",
-      "password": "asdasd",
-      "isRestaurant": false,
-      "id": 12
-    },
-    {
-      "username": "sasdsasd",
-      "password": "assdasdas",
-      "isRestaurant": false,
-      "id": 13
-    },
-    {
-      "username": "sassdassd",
-      "password": "adsasd",
-      "isRestaurant": false,
-      "id": 14
-    },
-    {
-      "username": "sadsasds",
-      "password": "asdasdass",
-      "isRestaurant": false,
-      "id": 15
-    },
-    {
-      "username": "sdad",
-      "password": "asdasd",
-      "isRestaurant": true,
-      "id": 16
-    },
-    {
-      "username": "assdasd",
-      "password": "assdasdas",
-      "isRestaurant": false,
-      "id": 17
-    },
-    {
-      "username": "asdassd",
-      "password": "zxczxcasd",
-      "isRestaurant": false,
-      "id": 18
-    },
-    {
-      "username": "asdasd",
-      "password": "asdasdasd",
-      "isRestaurant": true,
-      "id": 19
-    },
-    {
-      "username": "asdasd",
-      "password": "123asdad",
-      "isRestaurant": false,
-      "id": 20
-    },
-    {
-      "username": "123123",
-      "password": "asdasd",
-      "isRestaurant": true,
-      "id": 21
-    },
-    {
-      "username": "asdad",
-      "password": "asdasdads",
-      "isRestaurant": false,
-      "id": 22
-    },
-    {
-      "username": "asdad",
-      "password": "asdasdasd",
-      "isRestaurant": true,
-      "id": 23
-    },
-    {
-      "username": "ㅁㄴㅇㅁㄴㅇ",
-      "password": "asdasd",
-      "isRestaurant": false,
-      "id": 4
-    },
-    {
-      "username": "username6",
-      "password": "password6!",
-      "isRestaurant": false,
-      "id": 5
     }
   ],
   "restaurantlist": [
@@ -235,24 +109,6 @@
           "price": 30000
         }
       ]
-    },
-    {
-      "menuName": "asd",
-      "price": "2",
-      "desc": "asd",
-      "id": 4
-    },
-    {
-      "menuName": "asd",
-      "price": "2",
-      "desc": "asd",
-      "id": 5
-    },
-    {
-      "menuName": "asf",
-      "price": "3",
-      "desc": "asf",
-      "id": 6
     }
   ],
   "menu": [
@@ -400,6 +256,36 @@
         }
       ],
       "id": 7
+    },
+    {
+      "memberUsername": "user1111",
+      "restaurantUsername": "storeJelly1",
+      "orderDetailsList": [
+        {
+          "menuName": "초밥",
+          "count": 1
+        },
+        {
+          "menuName": "덮밥",
+          "count": 1
+        }
+      ],
+      "id": 8
+    },
+    {
+      "memberUsername": "user1111",
+      "restaurantUsername": {},
+      "orderDetailsList": [
+        {
+          "menuName": "초밥",
+          "count": 1
+        },
+        {
+          "menuName": "덮밥",
+          "count": 1
+        }
+      ],
+      "id": 9
     }
   ],
   "customerlist": [

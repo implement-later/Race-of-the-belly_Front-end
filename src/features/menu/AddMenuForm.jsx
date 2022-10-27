@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../elem/Button";
 import Input from "../../elem/Input";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { __addMenuByIdThunk } from "../../redux/modules/menulistSlice";
 
 const AddMenuForm = () => {
   const { restaurantId } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [files, setFiles] = useState("");
   const [preview, setPreview] = useState();
@@ -77,7 +78,7 @@ const AddMenuForm = () => {
           value={price}
           placeholder="가격"
         />
-        <StBtn>메뉴 추가</StBtn>
+        <StBtn onClick={() => navigate(-1)}>메뉴 추가</StBtn>
       </Stform>
     </StContainerDiv>
   );

@@ -52,6 +52,7 @@ export const __updateMenuThunk = createAsyncThunk(
   "UPDATE_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
+      console.log(payload);
       const { data } = await apis.update(payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
@@ -109,7 +110,7 @@ export const menulistSlice = createSlice({
     [__delMenuByMenuIdThunk.fulfilled]: (state, action) => {
       state.menulistByResId.isLoading = false;
       const target = state.menulistByResId.data.findIndex(
-        (menu) => menu.id === action.payload
+        (menu) => menu.menuId === action.payload
       );
       state.menulistByResId.data.splice(target, 1);
     },
@@ -124,7 +125,7 @@ export const menulistSlice = createSlice({
     },
     [__updateMenuThunk.fulfilled]: (state, action) => {
       const target = state.menulistByResId.data.findIndex(
-        (comment) => comment.id === action.payload.id
+        (comment) => comment.id === action.payload.menuId
       );
       state.isLoading = false;
       state.menulistByResId.data.splice(target, 1, action.payload);

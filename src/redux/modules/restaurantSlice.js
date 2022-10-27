@@ -6,8 +6,21 @@ export const __getRestaurantList = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await apis.restaurantlist();
-      console.log(data);
+
       return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __getRstThunk = createAsyncThunk(
+  "GET_RST",
+  async (restaurantId, thunkAPI) => {
+    try {
+      const { data } = await apis.restaurantlist();
+      const filteredArr = data.data.filter((x) => x.id === restaurantId);
+      return thunkAPI.fulfillWithValue(filteredArr[0]);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -18,6 +31,7 @@ const initialState = {
   restaurantlist: [],
   isLoading: false,
   error: null,
+  restaurant: {},
 };
 
 const restaurantSlice = createSlice({
@@ -39,6 +53,12 @@ const restaurantSlice = createSlice({
     [__getRestaurantList.rejected]: (state, action) => {
       state.isLoading = false;
     },
+    /////
+    [__getRstThunk.pending]: (state) => {},
+    [__getRstThunk.fulfilled]: (state, action) => {
+      state.restaurant = action.payload;
+    },
+    [__getRstThunk.rejected]: (state, action) => {},
   },
 });
 
