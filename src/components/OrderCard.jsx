@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useParams } from "react";
 import Wrapper from "../elem/Wrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { __getCustomerlist } from "../redux/modules/customerlistSlice";
@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const OrderCard = () => {
+  let query = window.location.search;
+  let param = new URLSearchParams(query);
+  let id = param.get("id");
+  console.log(id);
   const newlist = useSelector((state) => state.customerlist.customerlist);
   const dispatch = useDispatch();
   const navigate = useNavigate();
