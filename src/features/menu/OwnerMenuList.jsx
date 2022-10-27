@@ -10,9 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const OwnerMenuList = () => {
   const { restaurantId } = useParams();
   const menuList = useSelector((state) => state.menulist.menulistByResId.data);
-  console.log(menuList);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  console.log(restaurantId);
   // 레스토랑 아이디로 menulist 가져오기 => menulistByResId
   useEffect(() => {
     dispatch(__getMenuByIdThunk(restaurantId));
@@ -34,7 +34,7 @@ const OwnerMenuList = () => {
         </ul>
       </StDiv>
       <StLink to={`/owner/menu/${restaurantId}`}>+</StLink>
-      <StLinkChev to={`/owner/orders/customerlist`}>></StLinkChev>
+      <StLinkChev to={`/owner/orders/${restaurantId}`}>+</StLinkChev>
     </>
   );
 };

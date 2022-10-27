@@ -1,25 +1,29 @@
-import React, { useEffect, useParams } from "react";
+import React, { useEffect } from "react";
 import Wrapper from "../elem/Wrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { __getCustomerlist } from "../redux/modules/customerlistSlice";
-import { useNavigate } from "react-router-dom";
+import {
+  __getCustomerlist,
+  __getCustomerThunk,
+} from "../redux/modules/customerlistSlice";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const OrderCard = () => {
-  let query = window.location.search;
-  let param = new URLSearchParams(query);
-  let id = param.get("id");
-  console.log(id);
-  const newlist = useSelector((state) => state.customerlist.customerlist);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(__getCustomerlist());
-    console.log(2);
-  }, [dispatch]);
+  const { restaurantId } = useParams();
+  console.log(restaurantId);
 
+  const newlist = useSelector((state) => state.customerlist.customerlist);
+
+  useEffect(() => {
+    dispatch(__getCustomerlist(restaurantId));
+    console.log(3);
+  }, [dispatch, restaurantId]);
   console.log(newlist);
+  console.log(5);
+
   // {restaurantUsername: 'asd', memberUsername: 'assd', price: 13000, id: 1}
   return (
     <>
@@ -38,7 +42,7 @@ const OrderCard = () => {
                 }}
               >
                 <Stdiv>
-                  <div>{val.customerUsername}</div>
+                  <div>{val.restaurantId}</div>
                   <br />
                 </Stdiv>
               </StDiv>

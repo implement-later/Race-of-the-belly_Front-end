@@ -16,8 +16,8 @@ const Header = () => {
         <Img1 src={process.env.PUBLIC_URL + "/img/logo2.png"}></Img1>
         <Button
           onClick={(e) => {
-            deleteCookie("Authorization");
-            deleteCookie("Refresh-token");
+            localStorage.removeItem("Authorization" && "Refresh-token");
+            // localStorage.removeIteme();
             alert("로그아웃 되셨습니다.");
             navigate("/");
           }}

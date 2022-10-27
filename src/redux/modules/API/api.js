@@ -33,7 +33,7 @@ export const apis = {
 
   // customerlistSlice
   // customerlist: () => api.get("/customerlist/"),
-  customerlist: (payload) => api.get(`/restaurant/order/${payload}`),
+  customerlist: (restaurantId) => api.get(`/restaurant/order/${restaurantId}`),
 
   // menulistSlice
   getmenulist: (payload) => api.get(`/restaurant/${payload}`),
