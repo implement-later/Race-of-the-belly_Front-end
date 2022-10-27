@@ -1,21 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __postLogin } from "./../../redux/modules/loginSlice";
+import {
+  postSignUp,
+  __postLogin,
+  getNavi,
+} from "./../../redux/modules/loginSlice";
 import Wrapper from "../../elem/Wrapper";
 import styled from "styled-components";
 import { __getRestaurantList } from "../../redux/modules/restaurantSlice";
 
 function Userlogin() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // id, apssword, boolean
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isRestaurant, setIsRestaurant] = useState(false);
 
   const { user } = useSelector((state) => state);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   // request
   const postLogin = {
@@ -30,12 +33,10 @@ function Userlogin() {
 
     if (username === "") return alert("아이디를 입력하세요");
     if (password === "") return alert("패스워드를 입력하세요");
-    dispatch(__postLogin(postLogin));
+    dispatch(__postLogin({ postLogin, navigate }));
     // console.log(isRestaurant);
     // boolean 값에 따라 이동
-    console.log(isRestaurant);
     if (isRestaurant === false) {
-      console.log(123);
       navigate("/restaurant-list");
     } else {
       navigate(`/owner/${user.user.data.id}`);

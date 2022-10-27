@@ -107,24 +107,6 @@
           "price": 30000
         }
       ]
-    },
-    {
-      "menuName": "asd",
-      "price": "2",
-      "desc": "asd",
-      "id": 4
-    },
-    {
-      "menuName": "asd",
-      "price": "2",
-      "desc": "asd",
-      "id": 5
-    },
-    {
-      "menuName": "asf",
-      "price": "3",
-      "desc": "asf",
-      "id": 6
     }
   ],
   "menu": [
@@ -272,6 +254,36 @@
         }
       ],
       "id": 7
+    },
+    {
+      "memberUsername": "user1111",
+      "restaurantUsername": "storeJelly1",
+      "orderDetailsList": [
+        {
+          "menuName": "초밥",
+          "count": 1
+        },
+        {
+          "menuName": "덮밥",
+          "count": 1
+        }
+      ],
+      "id": 8
+    },
+    {
+      "memberUsername": "user1111",
+      "restaurantUsername": {},
+      "orderDetailsList": [
+        {
+          "menuName": "초밥",
+          "count": 1
+        },
+        {
+          "menuName": "덮밥",
+          "count": 1
+        }
+      ],
+      "id": 9
     }
   ],
   "customerlist": [

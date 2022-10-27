@@ -12,32 +12,35 @@ import {
 import { __getMenuThunk } from "../redux/modules/menuSlice";
 
 const OwnerMenuCard = ({ menu }) => {
-  const { restaurantId } = useParams();
   const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
   const menuItem = useSelector((state) => state.menu.menu);
+  // const menuList = useSelector((state) => state.menulist.menulistByResId.data);
   const initialState = { ...menu };
   const [menuObj, setMenuObj] = useState(initialState);
   const [updateMenu, setUpdateMenu] = useState();
 
   const { menuName, price } = menuObj;
-  console.log(menuName);
 
+  // 메뉴가 업데이트, 수정될때마다 리랜더링
   useEffect(() => {
     setUpdateMenu(menuItem);
   }, [menuItem]);
 
+  // 수정된 값을 menuObj에 넣기
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setMenuObj({ ...menuObj, [name]: value });
   };
 
   // 완료하기 버튼 누를시
-  const CompleteChangeHandler = () => {
+  const CompleteChangeHandler = (e) => {
+    e.preventDefault();
     if (menuName.trim() === "") {
       return alert("입력된 내용이 없습니다.");
     }
     if (isEdit) {
+      // menuObj에 menuId를 삭제
       setMenuObj(delete menuObj.menuId);
       console.log(menuObj);
       const id = menu.menuId;
@@ -48,7 +51,6 @@ const OwnerMenuCard = ({ menu }) => {
   // 수정 버튼 누를시
   const editChangeHandler = () => {
     setIsEdit(true);
-    console.log(menu.menuId);
     dispatch(__getMenuThunk(menu.menuId));
   };
 

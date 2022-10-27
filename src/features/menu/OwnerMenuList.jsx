@@ -5,14 +5,15 @@ import OwnerMenuCard from "../../components/OwnerMenuCard";
 import { __getMenuByIdThunk } from "../../redux/modules/menulistSlice";
 import styled from "styled-components";
 import Wrapper from "../../elem/Wrapper";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OwnerMenuList = () => {
   const { restaurantId } = useParams();
   const menuList = useSelector((state) => state.menulist.menulistByResId.data);
-
   console.log(menuList);
   const dispatch = useDispatch();
 
+  // 레스토랑 아이디로 menulist 가져오기 => menulistByResId
   useEffect(() => {
     dispatch(__getMenuByIdThunk(restaurantId));
   }, [dispatch, restaurantId]);
@@ -32,7 +33,8 @@ const OwnerMenuList = () => {
           ))}
         </ul>
       </StDiv>
-      <StLink to={`/owner/menu/${restaurantId}`}> + </StLink>
+      <StLink to={`/owner/menu/${restaurantId}`}>+</StLink>
+      <StLinkChev to={`/owner/orders/customerlist`}>></StLinkChev>
     </>
   );
 };
@@ -88,5 +90,48 @@ const StCategoryDiv = styled(Wrapper)`
   }
 `;
 const StLink = styled(Link)`
-  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  font-size: 70px;
+  font-weight: 700;
+  border: 0;
+  border-radius: 50%;
+  line-height: 60px;
+  width: 80px;
+  height: 80px;
+  background-color: ${(props) => props.theme.mainC};
+  color: #ffb000;
+  position: absolute;
+  transform: translate(450px, 0px);
+  transition: 0.2s ease-in-out;
+
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+`;
+const StLinkChev = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  font-size: 70px;
+  font-weight: 700;
+  border: 0;
+  border-radius: 50%;
+  line-height: 60px;
+  width: 80px;
+  height: 80px;
+  background-color: ${(props) => props.theme.mainC};
+  color: #ffb000;
+  position: absolute;
+  transform: translate(450px, 100px);
+  transition: 0.2s ease-in-out;
+
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
 `;

@@ -14,7 +14,6 @@ const MainCard = () => {
   useEffect(() => {
     dispatch(__getRestaurantList());
   }, [dispatch]);
-  console.log(mainlist);
 
   return (
     <>
