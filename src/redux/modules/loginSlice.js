@@ -7,6 +7,8 @@ export const __postSignup = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const res = await apis.signup(payload);
+      // setCookie("Authorization", res.headers.authorization, 7);
+      // setCookie("Refresh-token", res.headers["refresh-token"], 7);
 
       return thunkAPI.fulfillWithValue(res.data);
     } catch (error) {
@@ -41,9 +43,9 @@ const loginiSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    postSignUp: (state, action) => {
-      state.user.push(action.payload);
-    },
+    // postSignUp: (state, action) => {
+    //   state.user.push(action.payload);
+    // },
     // postLogin: (state, action) => {
     //   state.user.push(action.payload);
     // },
