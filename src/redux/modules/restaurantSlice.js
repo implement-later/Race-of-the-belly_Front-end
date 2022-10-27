@@ -19,7 +19,10 @@ export const __getRstThunk = createAsyncThunk(
   async (restaurantId, thunkAPI) => {
     try {
       const { data } = await apis.restaurantlist();
-      const filteredArr = data.data.filter((x) => x.id === restaurantId);
+
+      const filteredArr = data.data.filter(
+        (x) => x.restaurantId === parseInt(restaurantId)
+      );
       return thunkAPI.fulfillWithValue(filteredArr[0]);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

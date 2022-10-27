@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import { current } from "@reduxjs/toolkit";
 import { ServerUrl } from "../../sever";
 import { apis } from "./API/api";
+import { Navigate } from "react-router-dom";
 // import { serverUrl } from "../api";
 
 export const __getOrderDetailThunk = createAsyncThunk(
@@ -36,8 +37,8 @@ export const __postOrderMenuThunk = createAsyncThunk(
   "POST_ORDER_MENU",
   async (payload, thunkAPI) => {
     try {
-      const orderDetail = payload.orderDetailsList;
-
+      console.log(payload);
+      const orderDetail = payload.orderMenuObj.orderDetailsList;
       const dupArr = [];
       for (let i = 0; i < orderDetail.length; i++) {
         const obj = {};
@@ -47,10 +48,10 @@ export const __postOrderMenuThunk = createAsyncThunk(
 
         dupArr.push(obj);
       }
-      payload.orderDetailsList = dupArr;
-
-      const { data } = await apis.postorder(payload);
+      payload.orderMenuObj.orderDetailsList = dupArr;
+      const { data } = await apis.postorder(payload.orderMenuObj);
       console.log(data);
+      // payload.navigate(`/orderdetail/${data.data.orderId}`);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
