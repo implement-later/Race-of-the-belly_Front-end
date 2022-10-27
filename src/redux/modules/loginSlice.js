@@ -52,9 +52,9 @@ const loginiSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    postSignUp: (state, action) => {
-      state.user.push(action.payload);
-    },
+    // postSignUp: (state, action) => {
+    //   state.user.push(action.payload);
+    // },
     // postLogin: (state, action) => {
     //   state.user.push(action.payload);
     // },

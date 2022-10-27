@@ -27,7 +27,7 @@ const Router = () => {
         {/* owner 접근가능 */}
         <Route path="/owner/:restaurantId" element={<OwnerMenu />} />
         <Route path="/owner/menu/:restaurantId" element={<OwnerAddMenu />} />
-        <Route path="/owner/customer/orders" element={<OwnerOrders />} />
+        <Route path="/owner/orders/customerlist" element={<OwnerOrders />} />
         {/* 내부분 */}
         {/* 둘 다 접근 가능 */}
         <Route path="/orderdetail/:orderId" element={<OrderDetail />} />

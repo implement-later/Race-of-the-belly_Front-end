@@ -1,28 +1,26 @@
 {
   "user": [
     {
-      "username": "asd",
-      "password": "assd",
+      "username": "asdasd",
+      "password": "123asdad",
       "isRestaurant": true,
       "id": 1
     },
     {
-      "username": "asdas",
-      "password": "asdasd",
-      "isRestaurant": false,
+      "username": "asdasd",
+      "password": "123asdad",
+      "isRestaurant": true,
       "id": 2
     },
     {
-      "username": "asdasddas",
-      "name": "123123assd",
-      "password": "ruddlfz1!",
+      "username": "123asfasf",
+      "password": "asfsfzxfzxf",
       "isRestaurant": true,
       "id": 3
     },
     {
-      "username": "123sadadss",
-      "name": "asdasd",
-      "password": "rla123dlf!",
+      "username": "username",
+      "password": "jngbnoboagd",
       "isRestaurant": true,
       "id": 4
     }

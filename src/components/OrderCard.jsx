@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Wrapper from "../elem/Wrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { __getCustomerlist } from "../redux/modules/customerlistSlice";
-
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -11,16 +10,15 @@ const OrderCard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(newlist);
-
   useEffect(() => {
-    dispatch(__getCustomerlist(1));
-  }, []);
+    dispatch(__getCustomerlist());
+    console.log(2);
+  }, [dispatch]);
 
+  console.log(newlist);
   // {restaurantUsername: 'asd', memberUsername: 'assd', price: 13000, id: 1}
   return (
     <>
-      123
       {newlist && newlist.length > 0
         ? newlist.map((val, idx) => {
             return (
@@ -36,7 +34,7 @@ const OrderCard = () => {
                 }}
               >
                 <Stdiv>
-                  <div>{val.restaurantUsername}</div>
+                  <div>{val.customerUsername}</div>
                   <br />
                 </Stdiv>
               </StDiv>
@@ -54,16 +52,9 @@ const Stdiv = styled.div`
   border-radius: 24px;
 `;
 
-const Img = styled.div`
-  background: white;
-  inline-size: block;
-`;
-
 const StDiv = styled(Wrapper)`
   border: 3px solid #fcbe32;
   border-radius: 24px;
   background: #eaeef6;
   width: 300px;
 `;
-
-const StDiv1 = styled.div``;
