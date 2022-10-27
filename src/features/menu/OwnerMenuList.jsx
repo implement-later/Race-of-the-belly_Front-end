@@ -34,7 +34,7 @@ const OwnerMenuList = () => {
         </ul>
       </StDiv>
       <StLink to={`/owner/menu/${restaurantId}`}>+</StLink>
-      <StLinkChev to={`/owner/orders/${restaurantId}`}>+</StLinkChev>
+      <StLinkChev to={`/owner/orders/${restaurantId}`}>></StLinkChev>
     </>
   );
 };
