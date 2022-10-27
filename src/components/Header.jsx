@@ -17,7 +17,6 @@ const Header = () => {
         <Button
           onClick={(e) => {
             localStorage.clear();
-            // localStorage.removeIteme("Refresh-token");
             alert("로그아웃 되셨습니다.");
             navigate("/");
           }}
