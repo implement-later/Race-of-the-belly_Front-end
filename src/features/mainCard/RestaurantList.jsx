@@ -1,20 +1,12 @@
-import React from "react";
-import MainCard from "../../components/MainCard";
 import { useSelector } from "react-redux";
+import MainCard from "../../components/MainCard";
+
 function RestaurantList() {
-  const restaurantlist = useSelector(
-    (state) => state.restaurantlist.restaurantlist
-  );
-  // console.log(restaurantlist);
+  const user = useSelector((state) => state.user.data);
+  console.log(user);
   return (
     <>
       <MainCard />
-      {/* {restaurantlist.map((restaurantlist) => (
-        <MainCard
-          restaurantlist={restaurantlist}
-          key={restaurantlist.restaurantName}
-        />
-      ))} */}
     </>
   );
 }

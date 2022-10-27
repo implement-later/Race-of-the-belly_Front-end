@@ -1,14 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import Button from "../elem/Button";
+import { setCookie, deleteCookie } from "../shared/Cookie";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <>
       <StDiv>
-        <Img src={process.env.PUBLIC_URL + "/img/logo.png"}></Img>
+        <Img
+          onClick={() => navigate(-1)}
+          src={process.env.PUBLIC_URL + "/img/logo.png"}
+        ></Img>
         <Img1 src={process.env.PUBLIC_URL + "/img/logo2.png"}></Img1>
-        <Button>Logo out</Button>
+        <Button
+          onClick={(e) => {
+            localStorage.removeItem("Authorization" && "Refresh-token");
+            // localStorage.removeIteme();
+            alert("로그아웃 되셨습니다.");
+            navigate("/");
+          }}
+        >
+          Logo out
+        </Button>
       </StDiv>
     </>
   );

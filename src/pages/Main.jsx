@@ -15,10 +15,6 @@ function Main() {
         </span>
         <MyLayout>
           <MainCard />
-          <MainCard />
-          <MainCard />
-          <MainCard />
-          <MainCard />
         </MyLayout>
       </Layout>
     </>

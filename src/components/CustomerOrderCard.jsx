@@ -8,14 +8,20 @@ import { addMenuCnt, minusMenuCnt } from "../redux/modules/orderlistSlice";
 import Wrapper from "../elem/Wrapper";
 
 const CustomerOrderCard = ({ menu }) => {
+  const initialCnt = menu.count;
+  // const [menuCnt, setMenuCnt] = useState(initialCnt);
   const dispatch = useDispatch();
 
   const addBtnHandler = () => {
-    dispatch(addMenuCnt(menu.id));
+    dispatch(addMenuCnt(menu.menuId));
   };
 
   const minusBtnHandler = () => {
-    dispatch(minusMenuCnt(menu.id));
+    if (menu.count <= 0) {
+      alert("0개 이하는 주문이 불가능 합니다.");
+    } else {
+      dispatch(minusMenuCnt(menu.menuId));
+    }
   };
 
   return (
@@ -24,7 +30,7 @@ const CustomerOrderCard = ({ menu }) => {
       <StSpan>{menu.price} 원</StSpan>
       <StBtnDiv>
         <CountBtn onClick={addBtnHandler}>🔼</CountBtn>
-        <div> {menu.menuCnt}</div>
+        <div> {menu.count}</div>
         <CountBtn onClick={minusBtnHandler}>🔽</CountBtn>
       </StBtnDiv>
     </StLi>

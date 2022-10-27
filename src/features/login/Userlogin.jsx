@@ -1,39 +1,47 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import Wrapper from "../../elem/Wrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __addUsers } from "../../redux/modules/login/loginSlice";
+import {
+  postSignUp,
+  __postLogin,
+  getNavi,
+} from "./../../redux/modules/loginSlice";
+import Wrapper from "../../elem/Wrapper";
 import styled from "styled-components";
+import { __getRestaurantList } from "../../redux/modules/restaurantSlice";
 
 function Userlogin() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const { user } = useSelector((state) => state.user);
-  const [isRestaurant, setIsRestaurant] = useState(false);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // id, apssword, boolean
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isRestaurant, setIsRestaurant] = useState(false);
+
+  const { user } = useSelector((state) => state);
+
+  // request
+  const postLogin = {
+    // id: username,
+    username: username,
+    password: password,
+    isRestaurant: isRestaurant,
+  };
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
 
-    const input = {
-      id: username,
-      password: password,
-      isRestaurant,
-    };
-
     if (username === "") return alert("아이디를 입력하세요");
     if (password === "") return alert("패스워드를 입력하세요");
-
-    dispatch(__addUsers(input));
+    dispatch(__postLogin({ postLogin, navigate }));
+    // console.log(isRestaurant);
+    // boolean 값에 따라 이동
     if (isRestaurant === false) {
       navigate("/restaurant-list");
     } else {
-      navigate("/restaurant/:id");
+      navigate(`/owner/${user.user.data.id}`);
     }
+
     setUsername("");
     setPassword("");
   };
@@ -44,14 +52,13 @@ function Userlogin() {
         <Wrapper
           mg="100px auto"
           pd="30px"
-          wd="500px"
-          hg="50%%"
-          inline="background: #e1eef6; border:none; border-radius: 24px;
-       "
+          wd="400px"
+          hg="480px"
+          inline="background: #e1eef6; border:none; border-radius: 24px;"
         >
           <h1>Login</h1>
           <br />
-          <form onSubmit={(e) => onSubmitHandle(e)}>
+          <form onSubmit={onSubmitHandle}>
             <InputBox>
               <input
                 type="text"
@@ -78,6 +85,7 @@ function Userlogin() {
               <label htmlFor="password">비밀번호</label>
               <br />
             </InputBox>
+            <br />
             <StyledLabel htmlFor="Owner">
               <StyledInput
                 type="checkbox"
@@ -91,15 +99,14 @@ function Userlogin() {
             </StyledLabel>
             <br />
             <Button type="submit">Login</Button>
-            <br />
-            <Button
+            <Button1
               onClick={() => {
-                navigate("signup");
+                navigate("/member/signup");
               }}
               type="button"
             >
               Sign up
-            </Button>
+            </Button1>
           </form>
         </Wrapper>
       </Divbox>
@@ -178,9 +185,22 @@ const Button = styled.button`
   background: white;
   border-radius: 20px;
   height: 50px;
-  width: 400px;
+  width: 300px;
   border: 1px solid #fcbe32;
-  margin: 30px 20px;
+  margin: 40px 20px;
+  :hover {
+    color: white;
+    background: #fcbe32;
+  }
+`;
+
+const Button1 = styled.button`
+  background: white;
+  border-radius: 20px;
+  height: 50px;
+  width: 300px;
+  border: 1px solid #fcbe32;
+  margin: 0px 20px;
   :hover {
     color: white;
     background: #fcbe32;

@@ -3,20 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../elem/Button";
 import Input from "../../elem/Input";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { __addMenuByIdThunk } from "../../redux/modules/menulistSlice";
 
 const AddMenuForm = () => {
-  const { id } = useParams();
+  const { restaurantId } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [files, setFiles] = useState("");
-  const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState();
 
   const [menuObj, setMenuObj] = useState({
     menuName: "",
-    price: "",
-    desc: "",
-    restaurantId: id,
+    price: 0,
+    // desc: "",
+    // restaurantId: restaurantId,
   });
 
   const { menuName, price, desc } = menuObj;
@@ -24,30 +25,34 @@ const AddMenuForm = () => {
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setMenuObj({ ...menuObj, [name]: value });
-    console.log(menuObj);
   };
 
-  const onImgChange = async (e) => {
-    const formData = new FormData();
-    formData.append("image", e.target.file[0]);
-    setPreview(URL.createObjectURL(e.target.files[0]));
-  };
+  // const onImgChange = (e) => {
+  //   if (e.target.files) {
+  //     const uploadFile = e.target.files[0];
+  //     const formData = new FormData();
+  //     formData.append("files", uploadFile);
+  //     setMenuObj({ ...menuObj, img: formData });
+  //     setPreview(URL.createObjectURL(uploadFile));
+  //   }
+  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__addMenuByIdThunk(menuObj));
+    // console.log(menuObj);
   };
 
   return (
     <StContainerDiv>
       <StDiv>
-        <img src={preview} />
-        <Input
+        <img src="" />
+        {/* <Input
           type="file"
           name="file"
           accept="image/*"
-          onChange={onImgChange}
-        ></Input>
+          // onChange={onImgChange}
+        ></Input> */}
       </StDiv>
       <Stform onSubmit={onSubmitHandler}>
         <StInput
@@ -57,7 +62,7 @@ const AddMenuForm = () => {
           onChange={onChangeHandler}
           placeholder="음식명"
         />
-        <textarea
+        {/* <textarea
           value={desc}
           name="desc"
           id=""
@@ -65,7 +70,7 @@ const AddMenuForm = () => {
           rows="10"
           onChange={onChangeHandler}
           placeholder="음식 설명"
-        ></textarea>
+        ></textarea> */}
         <StInput
           type="number"
           name="price"
@@ -73,7 +78,7 @@ const AddMenuForm = () => {
           value={price}
           placeholder="가격"
         />
-        <StBtn>메뉴 추가</StBtn>
+        <StBtn onClick={() => navigate(-1)}>메뉴 추가</StBtn>
       </Stform>
     </StContainerDiv>
   );

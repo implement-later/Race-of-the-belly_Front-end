@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import thunk from "redux-thunk";
 import { current } from "@reduxjs/toolkit";
+import { ServerUrl } from "../../sever";
+import { apis } from "./API/api";
 // import { serverUrl } from "../api";
 
 // restaurant id로 메뉴조회
@@ -9,10 +11,9 @@ export const __getMenuByIdThunk = createAsyncThunk(
   "GET_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/restaurant?restaurantId=${payload}`
-      );
-      return thunkAPI.fulfillWithValue(data);
+      const { data } = await apis.getmenulist(payload);
+
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
     }
@@ -25,10 +26,9 @@ export const __addMenuByIdThunk = createAsyncThunk(
   "ADD_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.post(
-        `http://localhost:8080/restaurant?restaurantId=${payload.restaurantId}`,
-        payload
-      );
+      console.log(payload);
+      const { data } = await apis.addmenu(payload);
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -40,10 +40,7 @@ export const __delMenuByMenuIdThunk = createAsyncThunk(
   "DEL_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(
-        `http://localhost:8080/restaurant/${payload}`,
-        payload
-      );
+      await apis.delmenu(payload);
       return thunkAPI.fulfillWithValue(payload);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -55,12 +52,9 @@ export const __updateMenuThunk = createAsyncThunk(
   "UPDATE_MENU_LIST",
   async (payload, thunkAPI) => {
     try {
-      await axios.patch(
-        `http://localhost:8080/restaurant/${payload.id}`,
-        payload
-      );
       console.log(payload);
-      return thunkAPI.fulfillWithValue(payload);
+      const { data } = await apis.update(payload);
+      return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
     }
@@ -103,6 +97,7 @@ export const menulistSlice = createSlice({
     },
     [__addMenuByIdThunk.fulfilled]: (state, action) => {
       state.menulistByResId.isLoading = false;
+      console.log(action.payload);
       state.menulistByResId.data.push(action.payload);
     },
     [__addMenuByIdThunk.rejected]: (state, action) => {
@@ -116,7 +111,7 @@ export const menulistSlice = createSlice({
     [__delMenuByMenuIdThunk.fulfilled]: (state, action) => {
       state.menulistByResId.isLoading = false;
       const target = state.menulistByResId.data.findIndex(
-        (menu) => menu.id === action.payload
+        (menu) => menu.menuId === action.payload
       );
       state.menulistByResId.data.splice(target, 1);
     },
@@ -131,10 +126,10 @@ export const menulistSlice = createSlice({
     },
     [__updateMenuThunk.fulfilled]: (state, action) => {
       const target = state.menulistByResId.data.findIndex(
-        (comment) => comment.id === action.payload.id
+        (comment) => comment.id === action.payload.menuId
       );
       state.isLoading = false;
-      state.menulistByResId.data.splice(target, 1, action.payload);
+      state.menulistByResId.data.splice(target, 1, action.payload.data);
     },
     [__updateMenuThunk.rejected]: (state, action) => {
       state.isLoading = false;
