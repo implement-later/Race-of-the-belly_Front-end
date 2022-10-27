@@ -18,22 +18,24 @@ const OrderItemList = () => {
   const { restaurantId } = useParams();
   // 레스토랑 id를 받아서 그 id값으로 restaurant가 가진 menulist를 받아온다.
   const menuList = useSelector((state) => state.orderdetail.orderingList);
-  const orderDetail = useSelector((state) => state.orderdetail.orderdetail);
+
   const rstUsername = useSelector((state) => state.restaurantlist.restaurant);
   /////
-
-  localStorage.setItem("Customer", "user1111");
+  // 주문자 username받아오기
   const username = localStorage.getItem("Customer");
   // restaurant username받아오기
   useEffect(() => {
     dispatch(__getRstThunk(restaurantId));
   }, [dispatch, restaurantId]);
 
-  const [orderMenuObj, setOrderMenuObj] = useState({
+  console.log(rstUsername);
+  const initialState = {
     memberUsername: username,
-    restaurantUsername: rstUsername,
+    restaurantUsername: rstUsername.username,
     orderDetailsList: [],
-  });
+  };
+
+  const [orderMenuObj, setOrderMenuObj] = useState(initialState);
   // 초기에 레스토랑 id에 따라 보여질 메뉴 dispatch해서 reducer의 orderingList 배열에 넣어준다.
   useEffect(() => {
     dispatch(__getOrderingMenuThunk(restaurantId));
@@ -50,12 +52,13 @@ const OrderItemList = () => {
       setOrderMenuObj(dup);
     }
 
-    // 최종적으로 바뀐 Obj를 dispatch하여 post\
+    orderMenuObj.restaurantUsername = rstUsername.username;
 
+    // 최종적으로 바뀐 Obj를 dispatch하여 post\
     console.log(orderMenuObj);
-    dispatch(__postOrderMenuThunk(orderMenuObj));
+    dispatch(__postOrderMenuThunk({ orderMenuObj, navigate }));
     // post후에 response로 받은 값에 있는 orderId를 이용하여 상세페이지로 이동시킨다.
-    navigate(`/orderdetail/${orderDetail.data.orderId}`);
+    // navigate(`/orderdetail/${orderDetail.orderId}`);
   };
 
   return (

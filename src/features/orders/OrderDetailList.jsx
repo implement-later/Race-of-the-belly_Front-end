@@ -11,19 +11,12 @@ const OrderDetailList = () => {
   const dispatch = useDispatch();
   const { orderId } = useParams();
   const orderdetail = useSelector(
-    (state) => state.orderdetail.orderdetail.data.orderDetailsList
+    (state) => state.orderdetail.orderdetail.data
   );
-  const resList = useSelector((state) => state);
-  // console.log(resList);
-
-  useEffect(() => {
-    dispatch(__getRestaurantList());
-  }, [dispatch]);
-  // console.log(orderdetail);
 
   //retaurant id로 메뉴조회
   useEffect(() => {
-    dispatch(__getOrderDetailThunk(orderId));
+    // dispatch(__getOrderDetailThunk(orderId));
   }, [dispatch, orderId]);
 
   return (

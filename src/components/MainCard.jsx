@@ -32,7 +32,7 @@ const MainCard = () => {
                 pd="20px"
                 inline="background: #e1eef6 ; "
                 onClick={() => {
-                  navigate(`/order/${restaurant.id}`);
+                  navigate(`/order/${restaurant.restaurantId}`);
                 }}
               >
                 <Stdiv>

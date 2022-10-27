@@ -7,7 +7,7 @@ const MenuCard = ({ item }) => {
     <>
       <StLi>
         <StSpan>{item.menuName}</StSpan> <StSpan>{item.price}원</StSpan>
-        <StSpan>{item.menuCnt}개</StSpan>
+        <StSpan>{item.count}개</StSpan>
       </StLi>
     </>
   );
