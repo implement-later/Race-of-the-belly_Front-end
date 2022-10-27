@@ -97,6 +97,7 @@ export const menulistSlice = createSlice({
     },
     [__addMenuByIdThunk.fulfilled]: (state, action) => {
       state.menulistByResId.isLoading = false;
+      console.log(action.payload);
       state.menulistByResId.data.push(action.payload);
     },
     [__addMenuByIdThunk.rejected]: (state, action) => {
@@ -128,7 +129,7 @@ export const menulistSlice = createSlice({
         (comment) => comment.id === action.payload.menuId
       );
       state.isLoading = false;
-      state.menulistByResId.data.splice(target, 1, action.payload);
+      state.menulistByResId.data.splice(target, 1, action.payload.data);
     },
     [__updateMenuThunk.rejected]: (state, action) => {
       state.isLoading = false;

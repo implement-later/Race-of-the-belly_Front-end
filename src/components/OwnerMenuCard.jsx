@@ -15,6 +15,7 @@ const OwnerMenuCard = ({ menu }) => {
   const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
   const menuItem = useSelector((state) => state.menu.menu);
+  // const menuList = useSelector((state) => state.menulist.menulistByResId.data);
   const initialState = { ...menu };
   const [menuObj, setMenuObj] = useState(initialState);
   const [updateMenu, setUpdateMenu] = useState();
@@ -50,7 +51,6 @@ const OwnerMenuCard = ({ menu }) => {
   // 수정 버튼 누를시
   const editChangeHandler = () => {
     setIsEdit(true);
-    console.log(menu.menuId);
     dispatch(__getMenuThunk(menu.menuId));
   };
 

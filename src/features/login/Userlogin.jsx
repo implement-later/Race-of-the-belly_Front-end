@@ -19,7 +19,6 @@ function Userlogin() {
   const [isRestaurant, setIsRestaurant] = useState(false);
 
   const { user } = useSelector((state) => state);
-  const naviNum = useSelector((state) => state.user.navigate);
 
   // request
   const postLogin = {
@@ -40,7 +39,7 @@ function Userlogin() {
     if (isRestaurant === false) {
       navigate("/restaurant-list");
     } else {
-      navigate(`/user/${user.user.data.id}`);
+      navigate(`/owner/${user.user.data.id}`);
     }
 
     setUsername("");

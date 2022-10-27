@@ -10,18 +10,19 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(function (config) {
-  const accessToken = document.cookie.split(";")[0].split["="][1];
+  // const accessToken = document.cookie.split(";")[0].split["="][1];
   // .find((row) => row.startsWith("Authorization"))
   // .split("=")
   // .find((row) => row.startsWith("Bearer"));
-
+  const accessToken = localStorage.getItem("Authorization");
+  // console.log(accessToken);
   config.headers.Authorization = accessToken;
   return config;
 });
 
 export const apis = {
   // loginSlice
-  login: (payload) => api.post(`/member/login`, payload),
+  login: (payload) => api.post(`/member/login`, payload.postLogin),
   // login: (payload) => api.post(`/user`, payload),
 
   // signupSlice

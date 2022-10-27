@@ -8,8 +8,11 @@ export const __postSignup = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const res = await apis.signup(payload);
-      setCookie("Authorization", res.headers.authorization, 7);
-      setCookie("Refresh-token", res.headers["refresh-token"], 7);
+      // setCookie("Authorization", res.headers.authorization, 7);
+      localStorage.setItem("Authorization", res.headers.authorization);
+
+      // setCookie("Refresh-token", res.headers["refresh-token"], 7);
+      localStorage.setItem("Refresh-token", res.headers["refresh-token"]);
 
       return thunkAPI.fulfillWithValue(res.data);
     } catch (error) {
@@ -24,9 +27,13 @@ export const __postLogin = createAsyncThunk(
     try {
       const res = await apis.login(payload);
       // token이란 이름으로 쿠키 저장, 마지막은 파라미터는 만료시간 설정해주는 것.
-      setCookie("Authorization", res.headers.authorization, 7);
-      setCookie("Refresh-token", res.headers["refresh-token"], 7);
-
+      // setCookie("Authorization", res.headers.authorization, 7);
+      // setCookie("Refresh-token", res.headers["refresh-token"], 7);
+      // setCookie("Authorization", res.headers.authorization, 7);
+      localStorage.setItem("Authorization", res.headers.authorization);
+      console.log(res.headers.authorization);
+      // setCookie("Refresh-token", res.headers["refresh-token"], 7);
+      localStorage.setItem("Refresh-token", res.headers["refresh-token"]);
       // if (res.data.data.userType === "Restaurant") {
       //   localStorage.setItem("Restaurant", res.data.data.username);
       //   navigate(`/owner/${res.data.data.id}`);
